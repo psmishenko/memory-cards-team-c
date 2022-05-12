@@ -31,3 +31,7 @@
 
 # Ignore minitest files
 /test
+
+#ignore webpaker tmp files
+/public/packs
+/public/packs-test
