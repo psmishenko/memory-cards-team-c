@@ -1,15 +1,18 @@
 <h1>Boards</h1>
-<table>
-  <tr>
+<table class="table table-hover">
+  <thead>
     <th>Name</th>
     <th>User id</th>
+    <th></th>
+    <th></th>
+  </thead>
   </tr>
   <% @boards.each do |board| %>
     <tr>
       <td><%= link_to board.name, board_path(board) %></td>
       <td><%=board.user_id%></td>
-      <td><%= button_to 'Edit', edit_board_path(board), method: 'get'%></td>
-      <td><%= button_to 'Remove', board_path(board), method: 'delete', data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Edit', edit_board_path(board), method: 'get', class: "btn btn-primary"%></td>
+      <td><%= button_to 'Remove', board_path(board), method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?'} %></td>
   <% end %>
 </table>
 <%= link_to "Add a new board", new_board_path %>

@@ -3,7 +3,9 @@
   <%= current_user.email%>
   <%= link_to "Sign Out", destroy_session_path(:user), :method => :delete %>
   <div align="center">
-    <%= button_to 'Boards', boards_path, method: 'get', class: "btn btn-success" %>
+    <%= button_to boards_path, method: 'get', class: "btn btn-success" do %>
+     <span class="bi bi-bookmark-heart">Boards</span>
+     <% end %>
   </div>
 <% else %>
   <%= link_to "Sign In", new_user_session_path %>
