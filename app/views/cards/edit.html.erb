@@ -8,6 +8,12 @@
   <%= form.label :answer, class: "form-label" %><br />
   <%= form.text_field :answer, placeholder: "answer", class: "form-control" %>
   </div>
+   <div class="form-group w-50">
+  <br />
+  <%= form.label :board_id, class: "form-label" %>
+  <%= form.collection_select :board_id, Board.order(:name), :id, :name, options = {:prompt => 'Select a board...'}, html_options = { class: "form-select" } %>
+   <br />
+  </div>
   <%= form.submit class: "btn btn-primary"%>
 <% end %>
 <br />

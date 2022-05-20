@@ -13,9 +13,7 @@ class CardsController < ApplicationController
   end
 
   def create
-    card = Card.create!(board_id: 1,
-                        question: card_params['question'],
-                        answer: card_params['answer'])
+    card = Card.create!(card_params)
 
     redirect_to cards_path(card)
   end
@@ -36,7 +34,7 @@ class CardsController < ApplicationController
 
   def card_params
     params.require(:card)
-          .permit(:question, :answer)
+          .permit(:board_id, :question, :answer)
   end
 
   def current_card
