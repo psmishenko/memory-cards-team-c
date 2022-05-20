@@ -8,8 +8,6 @@ class BoardsController < ApplicationController
     @boards = Board.all
   end
 
-  def show; end
-
   def new
     @board = Board.new
   end
@@ -21,8 +19,6 @@ class BoardsController < ApplicationController
 
     redirect_to board_path(board)
   end
-
-  def edit; end
 
   def update
     @board.update(board_params)
