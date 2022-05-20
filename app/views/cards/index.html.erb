@@ -1,2 +1,17 @@
-<h1>Cards#index</h1>
-<p>Find me in app/views/cards/index.html.erb</p>
+<h1>Cards</h1>
+<table class="table table-hover">
+  <thead>
+    <th>Card question</th>
+    <th>Board id</th>
+    <th></th>
+    <th></th>
+  </thead>
+   <% @cards.each do |card| %>
+    <tr>
+      <td><%= link_to card.question, card_path(card) %></td>
+      <td><%=card.board_id%></td>
+      <td><%= button_to 'Edit', edit_card_path(card), method: 'get', class: "btn btn-primary"%></td>
+      <td><%= button_to 'Remove', card_path(card), method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+  <% end %>
+</table>
+<%= button_to "Add a new card", new_card_path, method: 'get', class: "btn btn-outline-dark"%>

@@ -1,2 +1,5 @@
-<h1>Cards#show</h1>
-<p>Find me in app/views/cards/show.html.erb</p>
+<h1>Card information</h1>
+<h3>Question <%= @card.question %></h2>
+<h3>Card answer: "<%= @card.answer %>"</h2>
+<br />
+<%= link_to "Back to all cards", cards_path %>
