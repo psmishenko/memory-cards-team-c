@@ -6,6 +6,10 @@
     <%= button_to boards_path, method: 'get', class: "btn btn-success" do %>
      <span class="bi bi-bookmark-heart">Boards</span>
      <% end %>
+     <br>
+     <%= button_to cards_path, method: 'get', class: "btn btn-primary" do %>
+     <span class="bi bi-credit-card-2-front-fill"> Cards</span>
+     <% end %>
   </div>
 <% else %>
   <%= link_to "Sign In", new_user_session_path %>
