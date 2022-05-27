@@ -35,3 +35,4 @@
 #ignore webpaker tmp files
 /public/packs
 /public/packs-test
+coverage
