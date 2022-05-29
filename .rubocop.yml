@@ -22,3 +22,6 @@ Rails/I18nLocaleTexts:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+Rails/I18nLocaleTexts:
+  Enabled: false
+

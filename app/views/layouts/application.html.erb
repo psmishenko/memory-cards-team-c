@@ -17,12 +17,17 @@
     var inst = new Autogrow();
   </script>
 </head>
-
 <body>
-  <%= render partial: "shared/navbar" %>
-  <div class="container pb-5 my-3">
-    <%= yield %>
-  </div>
-  <%= render partial: "shared/footer" %>
+  <% flash.each do |key, message| %>
+    <div class="alert <%= flash_class(key) %> alert-dismissible fade show text-center" role="alert">
+      <%= message %>
+    </div>
+  <% end %>
+
+    <%= render partial: "shared/navbar" %>
+    <div class="container my-3">
+      <%= yield %>
+    </div>
+    <%= render partial: "shared/footer" %>
 </body>
 </html>
