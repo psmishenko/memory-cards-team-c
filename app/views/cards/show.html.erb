@@ -1,5 +1,5 @@
 <h1>Card information</h1>
-<h3>Question <%= @card.question %></h2>
-<h3>Card answer: "<%= @card.answer %>"</h2>
+<h3>Question <%= @card.question %></h3>
+<h3>Card answer: <%= md_format(@card.answer).html_safe %></h3>
 <br />
 <%= link_to "Back to all cards", cards_path %>
