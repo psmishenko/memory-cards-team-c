@@ -1,14 +1,18 @@
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-group w-50">
-    <%= f.label :email, class: "form-label" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@mail.com" %>
+  <div class="row">
+    <div class="col-md-6" style="padding: 5px;">
+      <%= f.label :email, class: "form-label" %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@mail.com" %>
+    </div>
   </div>
 
-  <div class="form-group w-50">
-    <%= f.label :password, class: "form-label" %><br />
-    <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "passWord" %>
+  <div class="row">
+    <div class="col-md-6" style="padding: 5px;">
+      <%= f.label :password, class: "form-label" %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Insert your password" %>
+    </div>
   </div>
 
   <% if devise_mapping.rememberable? %>
