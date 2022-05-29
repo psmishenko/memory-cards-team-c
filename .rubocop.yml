@@ -24,4 +24,3 @@ Metrics/BlockLength:
     - 'spec/**/*.rb'
 Rails/I18nLocaleTexts:
   Enabled: false
-

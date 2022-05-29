@@ -32,6 +32,7 @@ class CardsController < ApplicationController
     else
       flash_error
       respond_to { |format| format.html { render :edit, status: :unprocessable_entity } }
+    end
   end
 
   def destroy
