@@ -21,10 +21,11 @@
       <%= f.label :remember_me, class: "form-check-label" %>
     </div>
   <% end %>
-
-  <div class="actions">
+<div class="row">
+  <div class="col-md-1" style="padding: 5px;">
     <%= f.submit "Log in", class: "btn btn-primary" %>
   </div>
+</div>
 <% end %>
 
 <%= render "devise/shared/links" %>
