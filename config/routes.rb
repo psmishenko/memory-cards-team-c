@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: "registrations" }
+  devise_scope :user do 
+    get 'users/edit_password', to: 'registrations#edit_password'
+    patch '/users/edit_password', to: 'registrations#update_password'
+  end
   root 'static_pages#home'
   get '/manual', to: 'static_pages#manual'
   resources :boards do
