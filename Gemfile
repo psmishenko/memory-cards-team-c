@@ -31,6 +31,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise', '~> 4.8', '>= 4.8.1'
 gem 'activeadmin', '~> 2.13', '>= 2.13.1'
 gem 'i18n', '~> 1.10'
+gem 'rouge', '~> 3.28'
 gem 'redcarpet', '~> 3.5', '>= 3.5.1'
 gem 'omniauth-google-oauth2', '~> 1.0', '>= 1.0.1'
 gem 'omniauth-github', '~> 2.0'
