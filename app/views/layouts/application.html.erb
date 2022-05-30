@@ -9,6 +9,9 @@
     <!-- Warning !! ensure that "stylesheet_pack_tag" is used, line below -->
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style type="text/css">
+      <%= Rouge::Themes::IgorPro.render(:scope => '.highlight') %>
+    </style>
   </head>
 
   <body>
