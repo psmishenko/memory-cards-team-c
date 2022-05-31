@@ -1,12 +1,11 @@
-<div class="card text-center border-dark w-75 mx-auto">
-  <div class="card-header bg-dark text-white">
+<div class="card border-dark w-75 mx-auto">
+  <div class="card-header bg-dark text-white text-center">
     Question
   </div>
-  <div class="card-body">
-    <h5 class="card-title"><%= @card.question %></h5>
-    <button class="btn btn-dark" id="showAnswer" onClick='toggleText(this.id)' type="button" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="true" aria-controls="collapseAnswer">Show answer</button>
+  <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="true" aria-controls="collapseAnswer">
+    <h5 class="card-title text-center"><%= @card.question %></h5>
   <div class="collapse" id="collapseAnswer">
-  <div class="card card-body">
+  <div class="card card-body border-dark">
     <%= md_format(@card.answer).html_safe %>
   </div>
   </div>
