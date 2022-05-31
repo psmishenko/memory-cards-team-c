@@ -10,8 +10,13 @@
   margin-right: 0.5rem;
   white-space: nowrap;
 }
+.card {
+  margin-top: 4rem;
+}
 .card-body {
-  align-items: center
+  align-items: center;
+  cursor: pointer;
+  padding: 2rem;
 }
 .card-question {
   padding: 1rem;

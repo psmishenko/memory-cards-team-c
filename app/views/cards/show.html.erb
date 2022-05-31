@@ -1,5 +1,15 @@
-<h1>Card information</h1>
-<h3>Question <%= @card.question %></h3>
-<h3>Card answer: <%= md_format(@card.answer).html_safe %></h3>
+<div class="card border-dark w-75 mx-auto">
+  <div class="card-header bg-dark text-white text-center">
+    Question
+  </div>
+  <div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="true" aria-controls="collapseAnswer">
+    <h5 class="card-title text-center"><%= @card.question %></h5>
+  <div class="collapse" id="collapseAnswer">
+  <div class="card card-answer border-dark">
+    <%= md_format(@card.answer).html_safe %>
+  </div>
+  </div>
+</div>
+</div>
 <br />
-<%= link_to "Back to all cards", cards_path %>
+<%= link_to "Back to all cards", cards_path %><br>
