@@ -2,14 +2,14 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="row">
-    <div class="col-md-6" style="padding: 5px;">
+    <div class="col-md-6 p-1">
       <%= f.label :email, class: "form-label" %><br />
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "email@mail.com" %>
     </div>
   </div>
 
   <div class="row">
-    <div class="col-md-6" style="padding: 5px;">
+    <div class="col-md-6 p-1">
       <%= f.label :password, class: "form-label" %><br />
       <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Insert your password" %>
     </div>
@@ -22,7 +22,7 @@
     </div>
   <% end %>
 <div class="row">
-  <div class="col-md-1" style="padding: 5px;">
+  <div class="col-md-1 p-1">
     <%= f.submit "Log in", class: "btn btn-primary" %>
   </div>
 </div>
