@@ -1,4 +1,5 @@
-<h1><%=@board.name %> cards</h1>
+<h1><%=@board.name %></h1>
+<h4><%=@board.description %></h4>
  <div class="d-flex flex-row">
   <div class="p-1">
     <%= button_to boards_path, method: 'get', class: "btn btn-outline-dark" do %>
@@ -16,8 +17,10 @@
    <% @cards.each do |card| %>
    <div class="mb-4 bg-light p-3">
    <div class="row card-body justify-content-sm-around">
-      <div class="col-4 card-question border shadow-lg rounded">
+      <div class="col-4 card-question border shadow-lg rounded" style="transform: rotate(0);">
         <%= card.question %>
+         <%= link_to(board_card_path(@board, card), class: "stretched-link") do%>
+        <% end %>
       </div>
       <div class="col-6 card-answer border shadow-lg rounded">
         <%= md_format(card.answer).html_safe %> 
