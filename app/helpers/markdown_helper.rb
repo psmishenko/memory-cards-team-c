@@ -6,14 +6,22 @@ module MarkdownHelper
   end
 
   def md_format(text)
-    render_options = {
+    renderer = CustomRender.new(render_options)
+    Redcarpet::Markdown.new(renderer, extensions).render(text)
+  end
+
+  private
+
+  def render_options
+    {
       filter_html: true,
       hard_wrap: true,
       link_attributes: { rel: 'nofollow' }
     }
-    renderer = CustomRender.new(render_options)
+  end
 
-    extensions = {
+  def extensions
+    {
       autolink: true,
       fenced_code_blocks: true,
       lax_spacing: true,
@@ -21,6 +29,5 @@ module MarkdownHelper
       strikethrough: true,
       superscript: true
     }
-    Redcarpet::Markdown.new(renderer, extensions).render(text)
   end
 end
