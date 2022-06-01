@@ -17,3 +17,6 @@ Layout/LineLength:
   Max: 120
 Style/Documentation:
   Enabled: false
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*.rb'
