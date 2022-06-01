@@ -20,4 +20,3 @@ Style/Documentation:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
-    - 'app/helpers/markdown_helper.rb'
