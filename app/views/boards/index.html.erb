@@ -16,4 +16,6 @@
   <% end %>
 </table>
 <br />
-<%= link_to "Add a new board", new_board_path %>
+<%= button_to new_board_path, method: 'get', class: "btn btn-outline-dark" do%>
+  <span class="bi bi-bookmark-plus">New board</span>
+<% end %>

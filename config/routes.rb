@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   devise_for :users, controllers: { registrations: "registrations" }
   root 'static_pages#home'
-  resources :boards
-  resources :cards
+  resources :boards do
+    resources :cards
+  end
 end

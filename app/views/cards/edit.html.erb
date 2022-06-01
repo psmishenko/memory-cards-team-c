@@ -1,23 +1,6 @@
 <h1>Edit card</h1>
-<%= form_with model: @card do |form| %>
- <div class="row">
-  <div class="col-md-5 mb-2 ">
-    <div class="form-floating">
-      <%= form.text_field :question, placeholder: "Question", class: "form-control", id: "floatingInput"%>
-      <%= form.label :question, "Insert a question", for: "floatingInput"%>
-    </div>
-</div>
-<div class="col-md-7 mb-2">
-      <div class="form-floating">
-      <%= form.text_area :answer, placeholder: "answer", class: "form-control", id: "floatingInputAnswer"%>
-      <%= form.label :answer, "Insert an answer", for: "floatingInputAnswer"%>
-    </div>
-    </div>
-    </div>
-  <%= form.label :board_id, class: "form-label" %>
-  <%= form.collection_select :board_id, Board.order(:name), :id, :name, options = {:prompt => 'Select a board...'}, html_options = { class: "form-select" } %>
-   <br />
-  <%= form.submit class: "btn btn-primary"%>
-<% end %>
+
+<%= render 'form', card: @card %>
+
 <br />
-<%= link_to "Back to all cards", cards_path %>
+<%= link_to "Back to all cards", board_cards_path(@board) %>

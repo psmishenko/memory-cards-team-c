@@ -1,5 +1,17 @@
-<h1>Cards</h1>
-<%= button_to "New card", new_card_path, method: 'get', class: "btn btn-outline-dark"%>
+<h1><%=@board.name %> cards</h1>
+ <div class="d-flex flex-row">
+  <div class="p-1">
+    <%= button_to boards_path, method: 'get', class: "btn btn-outline-dark" do %>
+     <span class="bi bi-bookmark-heart">Boards</span>
+     <% end %>
+  </div>
+  <div class="p-1">
+    <%= button_to new_board_card_path(@board), method: 'get', class: "btn btn-outline-dark" do%>
+     <span class="bi bi-plus-circle"> New card</span>
+     <% end %>
+  </div>
+  </div>
+
 <br>
    <% @cards.each do |card| %>
    <div class="mb-4 bg-light p-3">
@@ -11,10 +23,10 @@
         <%= md_format(card.answer).html_safe %> 
       </div>
       <div class="col-1">
-      <%= button_to(edit_card_path(card), method: 'get', class: "btn btn-primary") do%>
+      <%= button_to(edit_board_card_path(@board,card), method: 'get', class: "btn btn-primary") do%>
       <i class="bi bi-pencil-fill"></i>
         <% end %>
-         <%= button_to(card_path(card), method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' }) do%>
+         <%= button_to([@board, card], method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' }) do%>
       <i class="bi bi-trash-fill"></i>
         <% end %>
       </div>
