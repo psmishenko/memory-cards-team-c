@@ -2,11 +2,11 @@
 
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :current_board
-  before_action :current_card, except: %i[index new create]
+  before_action :find_board
+  before_action :find_card, except: %i[index new create]
 
   def index
-    @cards = @board.cards
+    @cards = @board.cards.order(created_at: :desc)
   end
 
   def new
@@ -15,23 +15,19 @@ class CardsController < ApplicationController
 
   def create
     @card = @board.cards.build(card_params)
-    respond_to do |format|
-      if @card.save
-        format.html { redirect_to board_cards_path(@board) }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-      end
+    if @card.save
+      respond_to { |format| format.html { redirect_to board_cards_path(@board) } }
+    else
+      respond_to { |format| format.html { render :new, status: :unprocessable_entity } }
     end
   end
 
   def update
     @card.update(card_params)
-    respond_to do |format|
-      if @card.update(card_params)
-        format.html { redirect_to board_card_path(@board) }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-      end
+    if @card.update(card_params)
+      respond_to { |format| format.html { redirect_to board_card_path(@board) } }
+    else
+      respond_to { |format| format.html { render :edit, status: :unprocessable_entity } }
     end
   end
 
@@ -48,11 +44,11 @@ class CardsController < ApplicationController
           .permit(:board_id, :question, :answer)
   end
 
-  def current_card
+  def find_card
     @card = @board.cards.find(params[:id])
   end
 
-  def current_board
+  def find_board
     @board = Board.find(params[:board_id])
   end
 end

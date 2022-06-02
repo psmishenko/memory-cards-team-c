@@ -1,38 +1,38 @@
 <h1><%=@board.name %></h1>
 <h4><%=@board.description %></h4>
- <div class="d-flex flex-row">
+<div class="d-flex flex-row">
   <div class="p-1">
     <%= button_to boards_path, method: 'get', class: "btn btn-outline-dark" do %>
-     <span class="bi bi-bookmark-heart">Boards</span>
-     <% end %>
+    <span class="bi bi-bookmark-heart">Boards</span>
+    <% end %>
   </div>
   <div class="p-1">
     <%= button_to new_board_card_path(@board), method: 'get', class: "btn btn-outline-dark" do%>
-     <span class="bi bi-plus-circle"> New card</span>
-     <% end %>
+    <span class="bi bi-plus-circle"> New card</span>
+    <% end %>
   </div>
-  </div>
+</div>
 
 <br>
-   <% @cards.each do |card| %>
-   <div class="mb-4 bg-light p-3">
-   <div class="row card-body justify-content-sm-around">
-      <div class="col-4 card-question border shadow-lg rounded" style="transform: rotate(0);">
-        <%= card.question %>
-         <%= link_to(board_card_path(@board, card), class: "stretched-link") do%>
-        <% end %>
-      </div>
-      <div class="col-6 card-answer border shadow-lg rounded">
-        <%= md_format(card.answer).html_safe %> 
-      </div>
-      <div class="col-1">
-      <%= button_to(edit_board_card_path(@board,card), method: 'get', class: "btn btn-primary") do%>
-      <i class="bi bi-pencil-fill"></i>
-        <% end %>
-         <%= button_to([@board, card], method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' }) do%>
-      <i class="bi bi-trash-fill"></i>
-        <% end %>
-      </div>
-    </div>
-    </div>
-  <% end %>
+<% @cards.each do |card| %>
+<div class="mb-4 bg-light p-3">
+ <div class="row card-body justify-content-sm-around">
+  <div class="col-4 card-question border shadow-lg rounded" style="transform: rotate(0);">
+    <%= card.question %>
+    <%= link_to(board_card_path(@board, card), class: "stretched-link") do%>
+    <% end %>
+  </div>
+  <div class="col-6 card-answer border shadow-lg rounded">
+    <%= md_format(card.answer).html_safe %> 
+  </div>
+  <div class="col-1">
+    <%= button_to(edit_board_card_path(@board,card), method: 'get', class: "btn btn-primary") do%>
+    <i class="bi bi-pencil-fill"></i>
+    <% end %>
+    <%= button_to([@board, card], method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' }) do%>
+    <i class="bi bi-trash-fill"></i>
+    <% end %>
+  </div>
+</div>
+</div>
+<% end %>
