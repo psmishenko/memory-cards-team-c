@@ -6,7 +6,7 @@ RSpec.describe 'Cards', type: :request do
   describe 'GET /index' do
     context 'when the user is not logged in' do
       it 'returns redirect' do
-        get '/cards/index'
+        get '/boards/:board_id/cards'
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -15,7 +15,7 @@ RSpec.describe 'Cards', type: :request do
   describe 'GET /show' do
     context 'when the user is not logged in' do
       it 'returns redirect' do
-        get '/cards/show'
+        get '/boards/:board_id/cards/:id'
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -24,7 +24,7 @@ RSpec.describe 'Cards', type: :request do
   describe 'GET /new' do
     context 'when the user is not logged in' do
       it 'returns redirect' do
-        get '/cards/new'
+        get '/boards/:board_id/cards/new'
         expect(response).to have_http_status(:redirect)
       end
     end
@@ -33,7 +33,7 @@ RSpec.describe 'Cards', type: :request do
   describe 'GET /edit' do
     context 'when the user is not logged in' do
       it 'returns redirect' do
-        get '/cards/edit'
+        get '/boards/:board_id/cards/:id/edit'
         expect(response).to have_http_status(:redirect)
       end
     end
