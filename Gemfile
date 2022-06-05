@@ -47,6 +47,7 @@ group :development, :test do
   gem 'rubocop', '~> 1.29', require: false
   gem 'rubocop-rails', '>= 2.14.2'
   gem 'rubocop-rspec', '~> 2.10'
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -68,6 +69,8 @@ group :test do
   gem 'webdrivers'
   gem 'shoulda-matchers', '~> 5.1'
   gem 'simplecov', require: false
+  gem 'database_cleaner-active_record'
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
