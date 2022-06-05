@@ -3,38 +3,228 @@
 require 'rails_helper'
 
 RSpec.describe 'Cards', type: :request do
+  let(:user) { create :user }
+  let(:board) { create :board, user_id: user.id }
+  let(:card) { create :card, board_id: board.id }
+  let(:correct_params) { { card: { question: 'Where is my car dude?', answer: 'Gone in Sixty Seconds' } } }
+
   describe 'GET /index' do
     context 'when the user is not logged in' do
-      it 'returns redirect' do
-        get '/boards/:board_id/cards'
-        expect(response).to have_http_status(:redirect)
+      include_examples 'when the user is not logged in', '/boards/1/cards'
+    end
+
+    context 'when the user is loggged in' do
+      before do
+        login_as(user, scope: :user)
+        get "/boards/#{board.id}/cards/"
       end
+
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(response.body).to include('New card') }
     end
   end
 
   describe 'GET /show' do
     context 'when the user is not logged in' do
-      it 'returns redirect' do
-        get '/boards/:board_id/cards/:id'
-        expect(response).to have_http_status(:redirect)
+      before do
+        get "/boards/#{board.id}/cards/#{card.id}"
       end
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
+    context 'when the user is loggged in' do
+      before do
+        sign_in(user, scope: :user)
+        get "/boards/#{board.id}/cards/#{card.id}"
+      end
+
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(response.body).to include('Back to all cards') }
     end
   end
 
   describe 'GET /new' do
     context 'when the user is not logged in' do
-      it 'returns redirect' do
-        get '/boards/:board_id/cards/new'
-        expect(response).to have_http_status(:redirect)
+      include_examples 'when the user is not logged in', '/boards/1/cards/new'
+    end
+
+    context 'when the user is loggged in' do
+      before do
+        login_as(user, scope: :user)
+        get "/boards/#{board.id}/cards/new"
       end
+
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(response.body).to include('New card') }
     end
   end
 
   describe 'GET /edit' do
     context 'when the user is not logged in' do
-      it 'returns redirect' do
-        get '/boards/:board_id/cards/:id/edit'
-        expect(response).to have_http_status(:redirect)
+      before do
+        get "/boards/#{board.id}/cards/#{card.id}/edit"
+      end
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
+    context 'when user loggged in' do
+      before do
+        sign_in(user, scope: :user)
+        get "/boards/#{board.id}/cards/#{card.id}/edit"
+      end
+
+      it { expect(response).to have_http_status(:ok) }
+      it { expect(response.body).to include('Edit card') }
+    end
+  end
+
+  describe 'POST /create' do
+    context 'when the user is not logged in' do
+      before do
+        post "/boards/#{board.id}/cards/",
+             params: { card: { question: 'Where is my car dude?', answer: 'Gone in Sixty Seconds' } }
+      end
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
+    context 'when the user is loggged in and data correct' do
+      before do
+        sign_in(user, scope: :user)
+        post "/boards/#{board.id}/cards/",
+             params: { card: { question: 'Where is my car dude?', answer: 'Gone in Sixty Seconds' } }
+        follow_redirect!
+      end
+
+      it { expect(response.body).to include('Where is my car dude?') }
+      it { expect(flash[:success]).to include('Card created') }
+    end
+
+    context 'when the user is loggged in and name empty' do
+      before do
+        sign_in(user, scope: :user)
+        post "/boards/#{board.id}/cards/", params: { card: { question: '', answer: 'Gone in Sixty Seconds' } }
+      end
+
+      it { expect(response).to render_template(:new) }
+      it { expect(flash[:error]).to include('Question is required') }
+    end
+
+    context 'when the user is loggged in and description empty' do
+      before do
+        sign_in(user, scope: :user)
+        post "/boards/#{board.id}/cards/", params: { card: { question: 'Where is my car dude?', answer: '' } }
+      end
+
+      it { expect(response).to render_template(:new) }
+      it { expect(flash[:error]).to include('Answer is required') }
+    end
+
+    context 'when the user is loggged in and description so long' do
+      before do
+        sign_in(user, scope: :user)
+        post "/boards/#{board.id}/cards/",
+             params: { card: { question: ('s' * 201).to_s, answer: 'Gone in Sixty Seconds' } }
+      end
+
+      it { expect(response).to render_template(:new) }
+      it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
+    end
+  end
+
+  describe 'PATCH /update' do
+    context 'when the user is not logged in' do
+      before do
+        patch "/boards/#{board.id}/cards/#{card.id}", params: correct_params
+      end
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
+    context 'when the user is logged in and data correct' do
+      before do
+        sign_in(user, scope: :user)
+        patch "/boards/#{board.id}/cards/#{card.id}", params: correct_params
+        follow_redirect!
+      end
+
+      it { expect(response.body).to include('Where is my car dude?') }
+      it { expect(response.body).to include('Gone in Sixty Seconds') }
+      it { expect(flash[:success]).to include('Card updated') }
+    end
+
+    context 'when the user is loggged in and name empty' do
+      before do
+        sign_in(user, scope: :user)
+        patch "/boards/#{board.id}/cards/#{card.id}",
+              params: { card: { question: '', answer: 'Gone in Sixty Seconds' } }
+      end
+
+      it { expect(response).to render_template(:edit) }
+      it { expect(flash[:error]).to include('Question is required') }
+    end
+
+    context 'when the user is loggged in and name so long' do
+      before do
+        sign_in(user, scope: :user)
+        patch "/boards/#{board.id}/cards/#{card.id}",
+              params: { card: { question: ('s' * 201).to_s, answer: 'Gone in Sixty Seconds' } }
+      end
+
+      it { expect(response).to render_template(:edit) }
+      it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
+    end
+
+    context 'when the user is loggged in and description empty' do
+      before do
+        sign_in(user, scope: :user)
+        patch "/boards/#{board.id}/cards/#{card.id}",
+              params: { card: { question: 'Where is my car dude?', answer: '' } }
+      end
+
+      it { expect(response).to render_template(:edit) }
+      it { expect(flash[:error]).to include('Answer is required') }
+    end
+  end
+
+  describe 'DELETE /destroy' do
+    context 'when the user is not loggged in' do
+      it 'is expected to destroy the requested card' do
+        card1 = create(:card, board_id: board.id)
+        expect do
+          delete "/boards/#{board.id}/cards/#{card1.id}"
+        end.to change(Card, :count).by(0)
+      end
+
+      it 'is expected to include "Card deleted"' do
+        card1 = create(:card, board_id: board.id)
+        delete "/boards/#{board.id}/cards/#{card1.id}"
+        expect(flash[:alert]).to include('You need to sign in or sign up before continuing.')
+      end
+    end
+
+    context 'when the user is loggged in' do
+      before do
+        sign_in(user, scope: :user)
+      end
+
+      it 'is expected to destroy the requested card' do
+        card1 = create(:card, board_id: board.id)
+        expect do
+          delete "/boards/#{board.id}/cards/#{card1.id}"
+        end.to change(Card, :count).by(-1)
+      end
+
+      it 'is expected to include "Card deleted"' do
+        card1 = create(:card, board_id: board.id)
+        delete "/boards/#{board.id}/cards/#{card1.id}"
+        expect(flash[:warn]).to include('Card deleted')
       end
     end
   end

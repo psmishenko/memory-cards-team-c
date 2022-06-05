@@ -10,8 +10,8 @@ RSpec.describe Card, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:question).with_message('Question is required') }
-    it { is_expected.to validate_presence_of(:answer).with_message('Answer is required') }
+    it { is_expected.to validate_presence_of(:question).with_message('is required') }
+    it { is_expected.to validate_presence_of(:answer).with_message('is required') }
 
     it {
       expect(card)

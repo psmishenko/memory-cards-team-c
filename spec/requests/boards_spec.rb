@@ -153,21 +153,38 @@ RSpec.describe 'Boards', type: :request do
   end
 
   describe 'DELETE /destroy' do
-    before do
-      sign_in(user, scope: :user)
+    context 'when the user is not loggged in' do
+      it 'is expected to destroy the requested card' do
+        board1 = create(:board, user_id: user.id)
+        expect do
+          delete "/boards/#{board1.id}"
+        end.to change(Card, :count).by(0)
+      end
+
+      it 'is expected to include "Card deleted"' do
+        board1 = create(:board, user_id: user.id)
+        delete "/boards/#{board1.id}"
+        expect(flash[:alert]).to include('You need to sign in or sign up before continuing.')
+      end
     end
 
-    it 'destroys the requested board' do
-      board1 = create(:board, user_id: user.id)
-      expect do
+    context 'when the user is loggged in' do
+      before do
+        sign_in(user, scope: :user)
+      end
+
+      it 'destroys the requested board' do
+        board1 = create(:board, user_id: user.id)
+        expect do
+          delete board_url(board1)
+        end.to change(Board, :count).by(-1)
+      end
+
+      it 'expect flash' do
+        board1 = create(:board, user_id: user.id)
         delete board_url(board1)
-      end.to change(Board, :count).by(-1)
-    end
-
-    it 'expect flash' do
-      board1 = create(:board, user_id: user.id)
-      delete board_url(board1)
-      expect(flash[:warn]).to include('Board deleted')
+        expect(flash[:warn]).to include('Board deleted')
+      end
     end
   end
 end
