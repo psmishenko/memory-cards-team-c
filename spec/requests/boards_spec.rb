@@ -17,9 +17,7 @@ RSpec.describe 'Boards', type: :request do
 
   describe 'GET /show' do
     context 'when the user is not logged in' do
-      before do
-        get "/boards/#{board.id}"
-      end
+      before { get "/boards/#{board.id}" }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -48,9 +46,7 @@ RSpec.describe 'Boards', type: :request do
 
   describe 'GET /edit' do
     context 'when the user is not logged in' do
-      before do
-        get "/boards/#{board.id}/edit"
-      end
+      before { get "/boards/#{board.id}/edit" }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -69,9 +65,7 @@ RSpec.describe 'Boards', type: :request do
 
   describe 'POST /create' do
     context 'when the user is not logged in' do
-      before do
-        post '/boards', params: { board: { name: 'My Board', description: 'Test' } }
-      end
+      before { post '/boards', params: { board: { name: 'My Board', description: 'Test' } } }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -111,9 +105,7 @@ RSpec.describe 'Boards', type: :request do
 
   describe 'PATCH /update' do
     context 'when the user is not logged in' do
-      before do
-        patch board_url(board), params: { board: { name: 'My Board', description: 'Test' } }
-      end
+      before { patch board_url(board), params: { board: { name: 'My Board', description: 'Test' } } }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -153,35 +145,33 @@ RSpec.describe 'Boards', type: :request do
   end
 
   describe 'DELETE /destroy' do
+    let!(:board1) { create(:board, user_id: user.id) }
+
     context 'when the user is not loggged in' do
       it 'is expected to destroy the requested card' do
-        board1 = create(:board, user_id: user.id)
         expect do
           delete "/boards/#{board1.id}"
         end.to change(Card, :count).by(0)
       end
 
       it 'is expected to include "Card deleted"' do
-        board1 = create(:board, user_id: user.id)
         delete "/boards/#{board1.id}"
         expect(flash[:alert]).to include('You need to sign in or sign up before continuing.')
       end
     end
 
     context 'when the user is loggged in' do
-      before do
-        sign_in(user, scope: :user)
-      end
+      let!(:board1) { create(:board, user_id: user.id) }
+
+      before { sign_in(user, scope: :user) }
 
       it 'destroys the requested board' do
-        board1 = create(:board, user_id: user.id)
         expect do
           delete board_url(board1)
         end.to change(Board, :count).by(-1)
       end
 
       it 'expect flash' do
-        board1 = create(:board, user_id: user.id)
         delete board_url(board1)
         expect(flash[:warn]).to include('Board deleted')
       end

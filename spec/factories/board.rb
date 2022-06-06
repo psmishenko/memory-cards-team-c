@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :board do
-    user_id { '1' }
+    user_id { create(:user).id }
     name { 'board name' }
     description { 'description' }
   end

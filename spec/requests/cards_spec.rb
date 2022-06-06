@@ -26,9 +26,7 @@ RSpec.describe 'Cards', type: :request do
 
   describe 'GET /show' do
     context 'when the user is not logged in' do
-      before do
-        get "/boards/#{board.id}/cards/#{card.id}"
-      end
+      before { get "/boards/#{board.id}/cards/#{card.id}" }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -63,15 +61,13 @@ RSpec.describe 'Cards', type: :request do
 
   describe 'GET /edit' do
     context 'when the user is not logged in' do
-      before do
-        get "/boards/#{board.id}/cards/#{card.id}/edit"
-      end
+      before { get "/boards/#{board.id}/cards/#{card.id}/edit" }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when user loggged in' do
+    context 'when user is loggged in' do
       before do
         sign_in(user, scope: :user)
         get "/boards/#{board.id}/cards/#{card.id}/edit"
@@ -139,9 +135,7 @@ RSpec.describe 'Cards', type: :request do
 
   describe 'PATCH /update' do
     context 'when the user is not logged in' do
-      before do
-        patch "/boards/#{board.id}/cards/#{card.id}", params: correct_params
-      end
+      before { patch "/boards/#{board.id}/cards/#{card.id}", params: correct_params }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -195,34 +189,32 @@ RSpec.describe 'Cards', type: :request do
 
   describe 'DELETE /destroy' do
     context 'when the user is not loggged in' do
+      let!(:card1) { create(:card, board_id: board.id) }
+
       it 'is expected to destroy the requested card' do
-        card1 = create(:card, board_id: board.id)
         expect do
           delete "/boards/#{board.id}/cards/#{card1.id}"
         end.to change(Card, :count).by(0)
       end
 
-      it 'is expected to include "Card deleted"' do
-        card1 = create(:card, board_id: board.id)
+      it 'is expected to include "You need to sign in or sign up before continuing."' do
         delete "/boards/#{board.id}/cards/#{card1.id}"
         expect(flash[:alert]).to include('You need to sign in or sign up before continuing.')
       end
     end
 
     context 'when the user is loggged in' do
-      before do
-        sign_in(user, scope: :user)
-      end
+      let!(:card1) { create(:card, board_id: board.id) }
+
+      before { sign_in(user, scope: :user) }
 
       it 'is expected to destroy the requested card' do
-        card1 = create(:card, board_id: board.id)
         expect do
           delete "/boards/#{board.id}/cards/#{card1.id}"
         end.to change(Card, :count).by(-1)
       end
 
       it 'is expected to include "Card deleted"' do
-        card1 = create(:card, board_id: board.id)
         delete "/boards/#{board.id}/cards/#{card1.id}"
         expect(flash[:warn]).to include('Card deleted')
       end
