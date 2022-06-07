@@ -13,7 +13,7 @@ RSpec.describe 'Cards', type: :request do
       include_examples 'when the user is not logged in', '/boards/1/cards'
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       before do
         login_as(user, scope: :user)
         get "/boards/#{board.id}/cards/"
@@ -32,7 +32,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       before do
         sign_in(user, scope: :user)
         get "/boards/#{board.id}/cards/#{card.id}"
@@ -48,7 +48,7 @@ RSpec.describe 'Cards', type: :request do
       include_examples 'when the user is not logged in', '/boards/1/cards/new'
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       before do
         login_as(user, scope: :user)
         get "/boards/#{board.id}/cards/new"
@@ -67,7 +67,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when user is loggged in' do
+    context 'when user is logged in' do
       before do
         sign_in(user, scope: :user)
         get "/boards/#{board.id}/cards/#{card.id}/edit"
@@ -89,7 +89,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when the user is loggged in and data correct' do
+    context 'when the user is logged in and data correct' do
       before do
         sign_in(user, scope: :user)
         post "/boards/#{board.id}/cards/",
@@ -101,7 +101,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:success]).to include('Card created') }
     end
 
-    context 'when the user is loggged in and name empty' do
+    context 'when the user is logged in and name empty' do
       before do
         sign_in(user, scope: :user)
         post "/boards/#{board.id}/cards/", params: { card: { question: '', answer: 'Gone in Sixty Seconds' } }
@@ -111,7 +111,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:error]).to include('Question is required') }
     end
 
-    context 'when the user is loggged in and description empty' do
+    context 'when the user is logged in and description empty' do
       before do
         sign_in(user, scope: :user)
         post "/boards/#{board.id}/cards/", params: { card: { question: 'Where is my car dude?', answer: '' } }
@@ -121,7 +121,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:error]).to include('Answer is required') }
     end
 
-    context 'when the user is loggged in and description so long' do
+    context 'when the user is logged in and description so long' do
       before do
         sign_in(user, scope: :user)
         post "/boards/#{board.id}/cards/",
@@ -153,7 +153,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:success]).to include('Card updated') }
     end
 
-    context 'when the user is loggged in and name empty' do
+    context 'when the user is logged in and name empty' do
       before do
         sign_in(user, scope: :user)
         patch "/boards/#{board.id}/cards/#{card.id}",
@@ -164,7 +164,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:error]).to include('Question is required') }
     end
 
-    context 'when the user is loggged in and name so long' do
+    context 'when the user is logged in and name so long' do
       before do
         sign_in(user, scope: :user)
         patch "/boards/#{board.id}/cards/#{card.id}",
@@ -175,7 +175,7 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
     end
 
-    context 'when the user is loggged in and description empty' do
+    context 'when the user is logged in and description empty' do
       before do
         sign_in(user, scope: :user)
         patch "/boards/#{board.id}/cards/#{card.id}",
@@ -188,7 +188,7 @@ RSpec.describe 'Cards', type: :request do
   end
 
   describe 'DELETE /destroy' do
-    context 'when the user is not loggged in' do
+    context 'when the user is not logggd in' do
       let!(:card1) { create(:card, board_id: board.id) }
 
       it 'is expected to destroy the requested card' do
@@ -203,7 +203,7 @@ RSpec.describe 'Cards', type: :request do
       end
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       let!(:card1) { create(:card, board_id: board.id) }
 
       before { sign_in(user, scope: :user) }

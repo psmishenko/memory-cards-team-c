@@ -10,7 +10,7 @@ RSpec.describe 'Boards', type: :request do
       include_examples 'when the user is not logged in', '/boards'
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       include_examples 'when the user is logged in', '/boards', 'Boards'
     end
   end
@@ -23,7 +23,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       before do
         sign_in(user, scope: :user)
         get "/boards/#{board.id}"
@@ -39,7 +39,7 @@ RSpec.describe 'Boards', type: :request do
       include_examples 'when the user is not logged in', '/boards/new'
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       include_examples 'when the user is logged in', '/boards/new', 'Create Board'
     end
   end
@@ -52,7 +52,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when user loggged in' do
+    context 'when user logged in' do
       before do
         sign_in(user, scope: :user)
         get "/boards/#{board.id}/edit"
@@ -71,7 +71,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
-    context 'when the user is loggged in and data correct' do
+    context 'when the user is logged in and data correct' do
       before do
         sign_in(user, scope: :user)
         post '/boards', params: { board: { name: 'My Board', description: 'Test' } }
@@ -82,7 +82,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:success]).to include('Board created') }
     end
 
-    context 'when the user is loggged in and name empty' do
+    context 'when the user is logged in and name empty' do
       before do
         sign_in(user, scope: :user)
         post '/boards', params: { board: { name: '', description: 'Test' } }
@@ -92,7 +92,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:error]).to include("Name can't be blank") }
     end
 
-    context 'when the user is loggged in and description empty' do
+    context 'when the user is logged in and description empty' do
       before do
         sign_in(user, scope: :user)
         post '/boards', params: { board: { name: 'My Board', description: '' } }
@@ -123,7 +123,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:success]).to include('Board updated') }
     end
 
-    context 'when the user is loggged in and name empty' do
+    context 'when the user is logged in and name empty' do
       before do
         sign_in(user, scope: :user)
         patch board_url(board), params: { board: { name: '', description: 'Test' } }
@@ -133,7 +133,7 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:error]).to include("Name can't be blank") }
     end
 
-    context 'when the user is loggged in and description empty' do
+    context 'when the user is logged in and description empty' do
       before do
         sign_in(user, scope: :user)
         patch board_url(board), params: { board: { name: 'My Board', description: '' } }
@@ -147,7 +147,7 @@ RSpec.describe 'Boards', type: :request do
   describe 'DELETE /destroy' do
     let!(:board1) { create(:board, user_id: user.id) }
 
-    context 'when the user is not loggged in' do
+    context 'when the user is not logged in' do
       it 'is expected to destroy the requested card' do
         expect do
           delete "/boards/#{board1.id}"
@@ -160,7 +160,7 @@ RSpec.describe 'Boards', type: :request do
       end
     end
 
-    context 'when the user is loggged in' do
+    context 'when the user is logged in' do
       let!(:board1) { create(:board, user_id: user.id) }
 
       before { sign_in(user, scope: :user) }
