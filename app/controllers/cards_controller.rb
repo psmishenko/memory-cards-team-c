@@ -3,7 +3,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_board
-  before_action :find_card, except: %i[index new create]
+  before_action :find_card, except: %i[index new create learning]
 
   def index
     @cards = @board.cards.order(created_at: :desc)
@@ -38,6 +38,15 @@ class CardsController < ApplicationController
     @card.destroy
     flash[:warn] = 'Card deleted'
     redirect_to board_cards_path
+  end
+
+  def learning
+    @cards = @board.cards
+    if @cards.empty?
+      redirect_to board_cards_path(@board)
+    else
+      render 'learning'
+    end
   end
 
   private

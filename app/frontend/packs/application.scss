@@ -39,3 +39,18 @@ body {
 .card-answer {
   padding: 1rem;
 }
+.carousel-control-prev-icon:after {
+  font-size: 4rem;
+  color: black;
+}
+.carousel-control-next-icon:after
+{
+  font-size: 4rem;
+  color: black;
+}
+.carousel {
+  margin-top: 2rem;
+}
+div.carousel-item > div.card {
+  margin-top: 1rem;
+}

@@ -8,13 +8,14 @@
     <%= link_to(board_cards_path(board), class: "stretched-link") do%>
     <% end %>
   </div>
-  <div class="card-footer row justify-content-center bg-transparent border-top-0">
-    <div class="col-2">
+  <div class="card-footer d-flex justify-content-center bg-transparent border-top-0">
+    <div class="btn-group" role="group" aria-label="Basic example">
+      <%= button_to(board_learning_path(board),method: 'get', class: "btn btn-success") do%>
+      <i class="bi bi-file-play">Learn</i>
+      <% end %>
       <%= button_to(edit_board_path(board), method: 'get', class: "btn btn-primary") do%>
       <i class="bi bi-pencil-fill"></i>
       <% end %>
-    </div>
-    <div class="col-2">
       <%= button_to(board_path(board), method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?'}) do%>
       <i class="bi bi-trash-fill"></i>
       <% end %>
