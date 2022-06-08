@@ -43,7 +43,7 @@ class CardsController < ApplicationController
   def learning
     @cards = @board.cards
     if @cards.empty?
-      redirect_to board_cards_path(@board)
+      redirect_to board_cards_path(@board), notice: 'Add cards before starting learning!'
     else
       render 'learning'
     end
