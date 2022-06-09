@@ -19,7 +19,7 @@ class BoardsController < ApplicationController
       redirect_to boards_path
     else
       flash_error
-      render new_board_path
+      render 'new'
     end
   end
 

@@ -66,7 +66,7 @@ RSpec.describe 'Boards', type: :request do
     end
 
     describe 'GET /show' do
-      before { get "/boards/#{board.id}"}
+      before { get "/boards/#{board.id}" }
 
       it { expect(response).to have_http_status(:ok) }
       it { expect(response.body).to include('Board information') }
@@ -155,5 +155,4 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:error]).to include("Description can't be blank") }
     end
   end
-
 end

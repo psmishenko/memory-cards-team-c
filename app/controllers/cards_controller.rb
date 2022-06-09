@@ -17,10 +17,10 @@ class CardsController < ApplicationController
     @card = @board.cards.build(card_params)
     if @card.save
       flash[:success] = 'Card created'
-      respond_to { |format| format.html { redirect_to board_cards_path(@board) } }
+      redirect_to board_cards_path
     else
       flash_error
-      respond_to { |format| format.html { render :new, status: :unprocessable_entity } }
+      render 'new'
     end
   end
 
@@ -28,10 +28,10 @@ class CardsController < ApplicationController
     @card.update(card_params)
     if @card.update(card_params)
       flash[:success] = 'Card updated'
-      respond_to { |format| format.html { redirect_to board_card_path(@board) } }
+      redirect_to board_cards_path
     else
       flash_error
-      respond_to { |format| format.html { render :edit, status: :unprocessable_entity } }
+      render 'edit'
     end
   end
 
