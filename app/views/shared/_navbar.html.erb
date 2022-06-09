@@ -11,13 +11,13 @@
     </div>
   </div>
   <% if current_user %>
-    <% if current_user.name.length.zero? %>
+    <% if current_user.name.present? %>
       <span class="navbar-text">
-        <%= current_user.email%>
+        <%= current_user.name%>
       </span>
     <% else %>
       <span class="navbar-text">
-         <%= current_user.name%>
+        <%= current_user.email%>
       </span>
     <% end %>
     <%= link_to "Edit User", edit_user_registration_path, class:"btn btn-outline-light" %>
