@@ -1,9 +1,11 @@
-<h1>Hello world</h1>
-<% if current_user %>
 <div align="center">
+  <% if current_user %>
+  <h3>Hi! Check your boards! Click on the button below!</h3>
   <%= button_to boards_path, method: 'get', class: "btn btn-success" do %>
   <span class="bi bi-bookmark-heart">Boards</span>
   <% end %>
-  <br>
+  <% else %>
+  <h1>Welcome to Memory cards app!</h1>
+  <% end %>
 </div>
-<% end %>
+<%= render partial: "shared/how_it_works" %>
