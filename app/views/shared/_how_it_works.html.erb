@@ -1,0 +1,83 @@
+<div align="center">
+  <ol>
+    <% if !current_user %>
+    <li>
+      <p>Sign in or sign up</p>
+    </li>
+    <% end %>
+    <li>
+      <p>Сreate your boards. Don't forget to add board name and description!</p>
+    </li>
+    <li>
+      <p>Fill your boards with informative cards. Answer code stylization is present!</p>
+    </li>
+    <li>
+      <p>Watch your cards and repeat stuff!</p>
+    </li>
+    <li>
+      <p>You can also use board learning feature for quality training.</p>
+    </li>
+    <li>
+      <p>(New feature!)</p>
+    </li>
+  </ol>
+</div>
+
+<!-- CSS Counter Cards -->
+<style type="text/css">
+	@import url('https://fonts.googleapis.com/css?family=Architects+Daughter|PT+Sans');
+
+  ol {
+    margin-top: 4rem;
+    counter-reset: a;
+  }
+
+  ol li:before {
+    content: counter(a);
+    counter-increment: a;
+    font-family: 'Architects Daughter';
+    line-height: 100%;
+    color: darkred;
+    position: absolute;
+    left: -20px;
+    top: 10px;
+    font-size: 5.48625rem;
+    z-index: 999;
+  }
+
+  ol li {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 19.5%;
+    padding: 0 0 0 17px;
+    border: 4px solid black;
+    position: relative;
+    height: 212px;
+    margin: 0 4.025%;
+    transition: all 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  }
+
+  ol li:hover {
+    transform: translate3d(0, -.375em, 0);
+  }
+
+  ol li p {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.125rem;
+    width: auto;
+    padding: 0 16px;
+    line-height: 22px;
+    font-family: 'PT Sans';
+    color: #232425;
+  }
+
+  @media screen and (max-width: 40.9375em) {
+    ol li {
+      display: block;
+      width: 80%;
+      margin: 2rem auto 0;
+    }
+  }
+</style>
