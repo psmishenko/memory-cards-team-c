@@ -91,6 +91,20 @@ RSpec.describe 'Boards', type: :request do
 
       it { expect(response.body).to include('My Board') }
       it { expect(flash[:success]).to include('Board created') }
+
+      context 'when name empty' do
+        before { post '/boards', params: { board: { name: '', description: 'Test' } } }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include("Name can't be blank") }
+      end
+
+      context 'when description empty' do
+        before { post '/boards', params: { board: { name: 'My Board', description: '' } } }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include("Description can't be blank") }
+      end
     end
 
     describe 'PATCH /update' do
@@ -102,6 +116,20 @@ RSpec.describe 'Boards', type: :request do
       it { expect(response.body).to include('My Board') }
       it { expect(response.body).to include('Test') }
       it { expect(flash[:success]).to include('Board updated') }
+
+      context 'when name empty' do
+        before { patch board_url(board), params: { board: { name: '', description: 'Test' } } }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include("Name can't be blank") }
+      end
+
+      context 'when description empty' do
+        before { patch board_url(board), params: { board: { name: 'My Board', description: '' } } }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include("Description can't be blank") }
+      end
     end
 
     describe 'DELETE /destroy' do
@@ -117,42 +145,6 @@ RSpec.describe 'Boards', type: :request do
         delete board_url(board1)
         expect(flash[:warn]).to include('Board deleted')
       end
-    end
-  end
-
-  context 'when the user is logged in and name empty' do
-    before { sign_in(user, scope: :user) }
-
-    describe 'POST /create' do
-      before { post '/boards', params: { board: { name: '', description: 'Test' } } }
-
-      it { expect(response).to render_template(:new) }
-      it { expect(flash[:error]).to include("Name can't be blank") }
-    end
-
-    describe 'PATCH /update' do
-      before { patch board_url(board), params: { board: { name: '', description: 'Test' } } }
-
-      it { expect(response).to render_template(:edit) }
-      it { expect(flash[:error]).to include("Name can't be blank") }
-    end
-  end
-
-  context 'when the user is logged in and description empty' do
-    before { sign_in(user, scope: :user) }
-
-    describe 'POST /create' do
-      before { post '/boards', params: { board: { name: 'My Board', description: '' } } }
-
-      it { expect(response).to render_template(:new) }
-      it { expect(flash[:error]).to include("Description can't be blank") }
-    end
-
-    describe 'PATCH /update' do
-      before { patch board_url(board), params: { board: { name: 'My Board', description: '' } } }
-
-      it { expect(response).to render_template(:edit) }
-      it { expect(flash[:error]).to include("Description can't be blank") }
     end
   end
 end

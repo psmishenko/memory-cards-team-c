@@ -62,6 +62,10 @@ RSpec.describe 'Cards', type: :request do
   end
 
   context 'when the user is logged in' do
+    let(:question_blank) { { card: { question: '', answer: 'Gone in Sixty Seconds' } } }
+    let(:answer_blank) { { card: { question: 'Where is my car dude?', answer: '' } } }
+    let(:long_question) { { card: { question: ('s' * 201).to_s, answer: 'Gone in Sixty Seconds' } } }
+
     before { login_as(user, scope: :user) }
 
     describe 'GET /index' do
@@ -100,6 +104,27 @@ RSpec.describe 'Cards', type: :request do
 
       it { expect(response.body).to include('Where is my car dude?') }
       it { expect(flash[:success]).to include('Card created') }
+
+      context 'when question empty' do
+        before { post "/boards/#{board.id}/cards/", params: question_blank }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include('Question is required') }
+      end
+
+      context 'when answer empty' do
+        before { post "/boards/#{board.id}/cards/", params: answer_blank }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include('Answer is required') }
+      end
+
+      context 'when question so long' do
+        before { post "/boards/#{board.id}/cards/", params: long_question }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
+      end
     end
 
     describe 'PATCH /update' do
@@ -111,6 +136,27 @@ RSpec.describe 'Cards', type: :request do
       it { expect(response.body).to include('Where is my car dude?') }
       it { expect(response.body).to include('Gone in Sixty Seconds') }
       it { expect(flash[:success]).to include('Card updated') }
+
+      context 'when question empty' do
+        before { patch "/boards/#{board.id}/cards/#{card.id}", params: question_blank }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include('Question is required') }
+      end
+
+      context 'when answer empty' do
+        before { patch "/boards/#{board.id}/cards/#{card.id}", params: answer_blank }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include('Answer is required') }
+      end
+
+      context 'when question so long' do
+        before { patch "/boards/#{board.id}/cards/#{card.id}", params: long_question }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
+      end
     end
 
     describe 'DELETE /destroy' do
@@ -126,66 +172,6 @@ RSpec.describe 'Cards', type: :request do
         delete "/boards/#{board.id}/cards/#{card1.id}"
         expect(flash[:warn]).to include('Card deleted')
       end
-    end
-  end
-
-  context 'when the user is logged in and question empty' do
-    let(:question_blank) { { card: { question: '', answer: 'Gone in Sixty Seconds' } } }
-
-    before { sign_in(user, scope: :user) }
-
-    describe 'POST /create' do
-      before { post "/boards/#{board.id}/cards/", params: question_blank }
-
-      it { expect(response).to render_template(:new) }
-      it { expect(flash[:error]).to include('Question is required') }
-    end
-
-    describe 'PATCH /update' do
-      before { patch "/boards/#{board.id}/cards/#{card.id}", params: question_blank }
-
-      it { expect(response).to render_template(:edit) }
-      it { expect(flash[:error]).to include('Question is required') }
-    end
-  end
-
-  context 'when the user is logged in and answer empty' do
-    let(:answer_blank) { { card: { question: 'Where is my car dude?', answer: '' } } }
-
-    before { sign_in(user, scope: :user) }
-
-    describe 'POST /create' do
-      before { post "/boards/#{board.id}/cards/", params: answer_blank }
-
-      it { expect(response).to render_template(:new) }
-      it { expect(flash[:error]).to include('Answer is required') }
-    end
-
-    describe 'PATCH /update' do
-      before { patch "/boards/#{board.id}/cards/#{card.id}", params: answer_blank }
-
-      it { expect(response).to render_template(:edit) }
-      it { expect(flash[:error]).to include('Answer is required') }
-    end
-  end
-
-  context 'when the user is logged in and question so long' do
-    let(:long_question) { { card: { question: ('s' * 201).to_s, answer: 'Gone in Sixty Seconds' } } }
-
-    before { sign_in(user, scope: :user) }
-
-    describe 'POST /create' do
-      before { post "/boards/#{board.id}/cards/", params: long_question }
-
-      it { expect(response).to render_template(:new) }
-      it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
-    end
-
-    describe 'PATCH /update' do
-      before { patch "/boards/#{board.id}/cards/#{card.id}", params: long_question }
-
-      it { expect(response).to render_template(:edit) }
-      it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
     end
   end
 end
