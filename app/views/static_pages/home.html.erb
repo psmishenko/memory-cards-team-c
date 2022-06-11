@@ -1,11 +1,26 @@
-<div align="center">
-  <% if current_user %>
-  <h3>Hi! Check your boards! Click on the button below!</h3>
-  <%= button_to boards_path, method: 'get', class: "btn btn-success" do %>
-  <span class="bi bi-bookmark-heart">Boards</span>
-  <% end %>
-  <% else %>
-  <h1>Welcome to Memory cards app!</h1>
-  <% end %>
+<div class="row gx-5 pb-5 align-items-center">
+  <div class="col-lg-7">
+    <!-- Mashead text and app badges-->
+    <div class="mb-5 mb-lg-0 text-center text-lg-start">
+      <h1 class="display-1 lh-1 mb-3">Welcome to Memory cards app!</h1>
+      <p class="lead fw-normal text-muted mb-3">This application will help you to study various topics more effectively.</p>
+      <% if current_user %>
+      <p class="lead fw-normal text-muted mb-3">Hello, <%= current_user.name.empty? ? current_user.email : current_user.name %>! Check your boards! Click on the button below!</p>
+      <%= button_to boards_path, method: 'get', class: "btn btn-success btn-lg" do%>
+      <span class="bi bi-bookmark-heart">Boards</span>
+      <% end %>
+      <% else %>
+      <p class="lead fw-normal text-muted mb-3">Let's start learning! Register or login to an existing account</p>
+      <%= link_to "Sign In", new_user_session_path, class:"btn btn-primary btn-lg" %>
+      <%= link_to "Sign up", new_user_registration_path, class:"btn btn-primary btn-lg" %>
+      <% end %>
+      <div class="d-flex flex-column flex-lg-row align-items-center">
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-5">
+    <%= image_tag "avatar.png", class: "d-block mx-auto"%>
+  </div>
 </div>
+<hr>
 <%= render partial: "shared/how_it_works" %>
