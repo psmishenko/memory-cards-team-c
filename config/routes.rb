@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  devise_for :users, controllers: { registrations: "registrations"}
+  devise_for :users, controllers: { registrations: "registrations" }
   resource :user, only: [:edit, :update]
   root 'static_pages#home'
   get '/manual', to: 'static_pages#manual'
