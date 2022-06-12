@@ -105,21 +105,21 @@ RSpec.describe 'Cards', type: :request do
       it { expect(response.body).to include('Where is my car dude?') }
       it { expect(flash[:success]).to include('Card created') }
 
-      context 'when question empty' do
+      context 'when question is empty' do
         before { post "/boards/#{board.id}/cards/", params: question_blank }
 
         it { expect(response).to render_template(:new) }
         it { expect(flash[:error]).to include('Question is required') }
       end
 
-      context 'when answer empty' do
+      context 'when answer is empty' do
         before { post "/boards/#{board.id}/cards/", params: answer_blank }
 
         it { expect(response).to render_template(:new) }
         it { expect(flash[:error]).to include('Answer is required') }
       end
 
-      context 'when question so long' do
+      context 'when question is too long' do
         before { post "/boards/#{board.id}/cards/", params: long_question }
 
         it { expect(response).to render_template(:new) }
@@ -137,21 +137,21 @@ RSpec.describe 'Cards', type: :request do
       it { expect(response.body).to include('Gone in Sixty Seconds') }
       it { expect(flash[:success]).to include('Card updated') }
 
-      context 'when question empty' do
+      context 'when question is empty' do
         before { patch "/boards/#{board.id}/cards/#{card.id}", params: question_blank }
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include('Question is required') }
       end
 
-      context 'when answer empty' do
+      context 'when answer is empty' do
         before { patch "/boards/#{board.id}/cards/#{card.id}", params: answer_blank }
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include('Answer is required') }
       end
 
-      context 'when question so long' do
+      context 'when question is too long' do
         before { patch "/boards/#{board.id}/cards/#{card.id}", params: long_question }
 
         it { expect(response).to render_template(:edit) }

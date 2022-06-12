@@ -92,14 +92,14 @@ RSpec.describe 'Boards', type: :request do
       it { expect(response.body).to include('My Board') }
       it { expect(flash[:success]).to include('Board created') }
 
-      context 'when name empty' do
+      context 'when name is empty' do
         before { post '/boards', params: { board: { name: '', description: 'Test' } } }
 
         it { expect(response).to render_template(:new) }
         it { expect(flash[:error]).to include("Name can't be blank") }
       end
 
-      context 'when description empty' do
+      context 'when description is empty' do
         before { post '/boards', params: { board: { name: 'My Board', description: '' } } }
 
         it { expect(response).to render_template(:new) }
@@ -117,14 +117,14 @@ RSpec.describe 'Boards', type: :request do
       it { expect(response.body).to include('Test') }
       it { expect(flash[:success]).to include('Board updated') }
 
-      context 'when name empty' do
+      context 'when name is empty' do
         before { patch board_url(board), params: { board: { name: '', description: 'Test' } } }
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include("Name can't be blank") }
       end
 
-      context 'when description empty' do
+      context 'when description is empty' do
         before { patch board_url(board), params: { board: { name: 'My Board', description: '' } } }
 
         it { expect(response).to render_template(:edit) }
