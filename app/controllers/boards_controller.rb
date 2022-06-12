@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
 
   def find_board
     @board = current_user.boards.find_by(id: params[:id])
-    redirect_to boards_path, notice: 'Board does not exist!' if @board.nil?
+    redirect_to boards_path, flash: { error: 'Board does not exist!' } if @board.nil?
   end
 
   def flash_error
