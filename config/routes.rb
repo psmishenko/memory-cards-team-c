@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get '/manual', to: 'static_pages#manual'
   resources :boards do
     resources :cards
+    get '/learning', to: 'cards#learning'
   end
   get '/404', to: "errors#not_found"
   get '/422', to: "errors#unacceptable"

@@ -31,6 +31,13 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
+    describe 'GET /learning' do
+      before { get "/boards/#{board.id}/learning" }
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
     describe 'POST /create' do
       before { post "/boards/#{board.id}/cards/", params: correct_params }
 
@@ -94,6 +101,25 @@ RSpec.describe 'Cards', type: :request do
 
       it { expect(response).to have_http_status(:ok) }
       it { expect(response.body).to include('Edit card') }
+    end
+
+    describe 'GET /learning' do
+      before do
+        board
+        card
+        get "/boards/#{board.id}/learning"
+      end
+
+      context 'when board has no cards' do
+        let(:card) { nil }
+
+        it { is_expected.to redirect_to(board_cards_path(board)) }
+        it { expect(flash[:notice]).to include('Add cards before starting learning!') }
+      end
+
+      context 'when board has cards' do
+        it { expect(response).to render_template(:learning) }
+      end
     end
 
     describe 'POST /create' do

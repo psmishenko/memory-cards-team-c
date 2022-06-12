@@ -1,0 +1,32 @@
+<h1><%= @board.name %> learning</h1><br />
+<%= button_to boards_path, method: 'get', class: "btn btn-outline-dark" do %>
+<span class="bi bi-bookmark-heart">Boards</span>
+<% end %>
+<div id="carouselExampleControls" class="carousel carousel-dark slide" data-bs-keyboard="true" data-bs-interval="false" data-bs-touch="true">
+	<div class="carousel-inner">
+		<% @cards.each do |card| %>
+		<div class="carousel-item">
+			<div class="card border-dark w-75 mx-auto">
+				<div class="card-header bg-dark text-white text-center">
+					Question #<%= @cards.index(card)+1 %>
+				</div>
+				<div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="true" aria-controls="collapseAnswer">
+					<h5 class="card-title text-center"><%= card.question %></h5>
+					<div class="collapse" id="collapseAnswer">
+						<div class="card card-answer border-dark">
+							<%= md_format(card.answer).html_safe %>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+		</div>
+		<% end %>
+	</div>
+	<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+		<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	</button>
+	<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+		<span class="carousel-control-next-icon" aria-hidden="true"></span>
+	</button>
+</div>
