@@ -13,6 +13,8 @@ module Mcapp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     
+    config.exceptions_app = self.routes
+
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
   html_tag
 }
