@@ -5,7 +5,7 @@
       <h1 class="display-1 lh-1 mb-3">Welcome to Memory cards app!</h1>
       <p class="lead fw-normal text-muted mb-3">This application will help you to study various topics more effectively.</p>
       <% if current_user %>
-      <p class="lead fw-normal text-muted mb-3">Hello, <%= current_user.name.empty? ? current_user.email : current_user.name %>! Check your boards! Click on the button below!</p>
+      <p class="lead fw-normal text-muted mb-3">Hello, <%= current_user.name.present? ? current_user.name : current_user.email %>! Check your boards! Click on the button below!</p>
       <%= button_to boards_path, method: 'get', class: "btn btn-success btn-lg" do%>
       <span class="bi bi-bookmark-heart">Boards</span>
       <% end %>
