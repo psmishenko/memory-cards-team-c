@@ -16,24 +16,27 @@ class CardsController < ApplicationController
   def create
     @card = @board.cards.build(card_params)
     if @card.save
-      respond_to { |format| format.html { redirect_to board_cards_path(@board) } }
+      flash[:success] = 'Card created'
+      redirect_to board_cards_path
     else
-      respond_to { |format| format.html { render :new, status: :unprocessable_entity } }
+      flash_error
+      render 'new'
     end
   end
 
   def update
-    @card.update(card_params)
     if @card.update(card_params)
-      respond_to { |format| format.html { redirect_to board_card_path(@board) } }
+      flash[:success] = 'Card updated'
+      redirect_to board_cards_path
     else
-      respond_to { |format| format.html { render :edit, status: :unprocessable_entity } }
+      flash_error
+      render 'edit'
     end
   end
 
   def destroy
     @card.destroy
-
+    flash[:warn] = 'Card deleted'
     redirect_to board_cards_path
   end
 
@@ -50,5 +53,9 @@ class CardsController < ApplicationController
 
   def find_board
     @board = Board.find(params[:board_id])
+  end
+
+  def flash_error
+    flash.now[:error] = @card.errors.full_messages[0]
   end
 end

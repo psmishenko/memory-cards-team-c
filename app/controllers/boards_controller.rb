@@ -13,22 +13,29 @@ class BoardsController < ApplicationController
   end
 
   def create
-    board = Board.create!(user_id: current_user.id,
-                          name: board_params['name'],
-                          description: board_params['description'])
-
-    redirect_to board_path(board)
+    @board = current_user.boards.build(board_params)
+    if @board.save
+      flash[:success] = 'Board created'
+      redirect_to boards_path
+    else
+      flash_error
+      render 'new'
+    end
   end
 
   def update
-    @board.update(board_params)
-
-    redirect_to board_path(@board)
+    if @board.update(board_params)
+      flash[:success] = 'Board updated'
+      redirect_to boards_path
+    else
+      flash_error
+      render 'edit'
+    end
   end
 
   def destroy
     @board.destroy
-
+    flash[:warn] = 'Board deleted'
     redirect_to boards_path
   end
 
@@ -42,5 +49,9 @@ class BoardsController < ApplicationController
 
   def find_board
     @board = Board.find(params[:id])
+  end
+
+  def flash_error
+    flash.now[:error] = @board.errors.full_messages[0]
   end
 end

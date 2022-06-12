@@ -22,3 +22,9 @@ Rails/I18nLocaleTexts:
 Metrics/BlockLength:
   Exclude:
     - 'spec/**/*.rb'
+Rails/I18nLocaleTexts:
+  Enabled: false
+RSpec/NestedGroups:
+  Max: 4
+RSpec/MultipleMemoizedHelpers:
+  Max: 8
