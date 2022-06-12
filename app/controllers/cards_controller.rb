@@ -25,7 +25,6 @@ class CardsController < ApplicationController
   end
 
   def update
-    @card.update(card_params)
     if @card.update(card_params)
       flash[:success] = 'Card updated'
       redirect_to board_cards_path

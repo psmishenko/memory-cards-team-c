@@ -59,6 +59,9 @@ RSpec.describe 'Boards', type: :request do
   end
 
   context 'when the user is logged in' do
+    let(:short_name) { { board: { name: 'a', description: 'Test' } } }
+    let(:long_description) { { board: { name: 'Name', description: ('s' * 201).to_s } } }
+
     before { sign_in(user, scope: :user) }
 
     describe 'GET /index' do
@@ -105,6 +108,20 @@ RSpec.describe 'Boards', type: :request do
         it { expect(response).to render_template(:new) }
         it { expect(flash[:error]).to include("Description can't be blank") }
       end
+
+      context 'when name is too short' do
+        before { post '/boards', params: short_name }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include('Name is too short (minimum is 2 characters)') }
+      end
+
+      context 'when description is too long' do
+        before { post '/boards', params: long_description }
+
+        it { expect(response).to render_template(:new) }
+        it { expect(flash[:error]).to include('Description is too long (maximum is 200 characters)') }
+      end
     end
 
     describe 'PATCH /update' do
@@ -129,6 +146,20 @@ RSpec.describe 'Boards', type: :request do
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include("Description can't be blank") }
+      end
+
+      context 'when name is too short' do
+        before { patch board_url(board), params: short_name }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include('Name is too short (minimum is 2 characters)') }
+      end
+
+      context 'when description is too long' do
+        before { patch board_url(board), params: long_description }
+
+        it { expect(response).to render_template(:edit) }
+        it { expect(flash[:error]).to include('Description is too long (maximum is 200 characters)') }
       end
     end
 
