@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
-    devise_for :users, controllers: { registrations: "registrations" }
+    devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks" }
     resource :user, only: [:edit, :update]
     root 'static_pages#home'
     get '/manual', to: 'static_pages#manual'
