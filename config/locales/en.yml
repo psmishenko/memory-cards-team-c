@@ -3,6 +3,104 @@ en:
   ru: 'Russian'
   en: 'English'
 
+  activerecord:
+    models:
+      user:
+        one: "User"
+        other: "Users"
+      board:
+        one: "Board"
+        other: "Boards"
+      card:
+        one: "Card"
+        other: "Cards"
+    errors:
+      models:
+        card:
+          attributes:
+            question:
+              blank: "Question is required!"
+              too_long: "%<count>s characters is the maximum allowed"
+            answer:
+              blank: "Answer is required!"
+
   global:
     boards_button: "Boards"
-    welcome: "Welcome to Memory cards app!"
+    board_content_button: "Board content"
+    new_board_button: "New board"
+    confirm_deletion: "Are you sure?"
+    form:
+      question_placeholder: "Insert a question"
+      answer_placeholder: "Insert an answer"
+      email_label: "Email"
+      password_label: "Password"
+      password_placeholder: "Insert your password"
+      submit: "Submit"
+    devise:
+      shared:
+        links:
+          log_in_button: "Log in"
+          sign_up_button: "Sign up"
+          forgot_password_button: "Forgot your password?"
+      sessions:
+          header: "Log in"
+          remember_me_label: "Remember me"
+          submit: "Log in"
+      registrations:
+        new:
+          header: "Sign up"
+          password_label_em: "characters minimum"
+          password_confirmation: "Password confirmation"
+          submit: "Sign up"
+      passwords:
+        new:
+          header: "Forgot your password?"
+          description: "Enter your email and we will send you instructions to generate a new password."
+          submit: "Send instructions"
+
+
+  shared:
+      navbar:
+        home: "Home"
+        manual: "Manual"
+        edit_user_button: "Edit user"
+        sign_out_button: "Sign out"
+        sign_in_button: "Sign in"
+        sign_up_button: "Sign up"
+      how_it_works:
+        header: "Short instructions for interacting with the app"
+        step1: "Sign in or sign up"
+        step2: "Сreate your boards. Don't forget to add board name and description!"
+        step3: "Fill your boards with informative cards. You can highlight your code in answers like code editors!"
+        step4: "Watch your cards and repeat stuff!"
+        step5: "You can also use board learning feature for quality training."
+        step6: "(New feature!)"
+      footer:
+        copyright: "Memory cards 2022. All Rights Reserved."
+  static_pages:
+      home:
+        welcome: "Welcome to Memory cards app!"
+        welcome2: "This application will help you to study various topics more effectively."
+        welcome3: "Let's start learning! Register or login to an existing account"
+      manual:
+        header: "Welcome to manual!"
+  boards:
+    index:
+      header: "Your boards"
+    new:
+      header: "Create a board"
+    edit:
+      header: "Edit board"
+    show:
+      header: "Board information"
+      name: "Board name:"
+      description: "Board description:"
+  cards:
+    index:
+      new_card: "New card"
+    new:
+      header: "New card"
+    edit:
+      header: "Edit card"
+    show:
+      card_header: "Question"

@@ -2,7 +2,107 @@
 ru:
   ru: 'Русский'
   en: 'Английский'
-  
+
+  activerecord:
+      models:
+        user:
+          one: "Пользователь"
+          other: "Пользователи"
+        board:
+          one: "Доска"
+          other: "Доски"
+        card:
+          one: "Каточка"
+          other: "Карточки"
+      errors:
+        models:
+          card:
+            attributes:
+              question:
+                blank: "Вопрос обязателен!"
+                too_long: "%<count>s символов - максимально допустимое значение"
+              answer:
+                blank: "Ответ обязателен!"
+
   global:
     boards_button: "Доски"
-    welcome: "Добро пожаловать в Memory Cards!"
+    board_content_button: "Контент доски"
+    new_board_button: "Новая доска"
+    confirm_deletion: "Вы уверены?"
+    form:
+      question_placeholder: "Введите вопрос"
+      answer_placeholder: "Введите ответ"
+      email_label: "Электронная почта"
+      password_label: "Пароль"
+      password_placeholder: "Введите ваш пароль"
+      submit: "Отправить"
+    devise:
+      shared:
+        links:
+          log_in_button: "Войти"
+          sign_up_button: "Регистрация"
+          forgot_password_button: "Забыли пароль?"
+      sessions:
+          header: "Войти в аккаунт"
+          remember_me_label: "Запомнить"
+          submit: "Войти"
+      registrations:
+        new:
+          header: "Регистрация аккаунта"
+          password_label_em: "символов минимум"
+          password_confirmation: "Подтверждение пароля"
+          submit: "Регистрация"
+      passwords:
+        new:
+          header: "Забыли свой пароль?"
+          description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля"
+          submit: "Выслать"
+  
+  shared:
+      navbar:
+        home: "Главная"
+        manual: "Мануал"
+        edit_user_button: "Профиль"
+        sign_out_button: "Выйти"
+        sign_in_button: "Войти"
+        sign_up_button: "Регистрация"
+      how_it_works:
+        header: "Краткая инструкция по работе с приложением"
+        step1:  "Зарегистрируйтесь или войдите в ваш аккаунт"
+        step2: "Создайте ваши доски. Не забудьте добавить наименование и описание доски!"
+        step3: "Заполните доски своими информативными карточками. Выделяйте ваш код в ответах как в редакторах кода!"
+        step4: "Просматривайте карточки и повторяйте материал!"
+        step5: "Используйте функцию обучения для качественного усвоения материала!"
+        step6: "(Новые функции!)"
+      footer:
+        copyright: "Memory cards 2022. Все права защищены."
+  static_pages:
+      home:
+        welcome: "Добро пожаловать в Memory Cards!"
+        welcome2: "Это приложение поможет вам более эффективно изучать различные темы."
+        welcome3: "Приступим к обучению! Зарегистрируйтесь или войдите в существующую учетную запись"
+      manual:
+        header: "Добро пожаловать в мануал!"
+
+
+  boards:
+    index:
+      header: "Ваши доски"
+    new:
+      header: "Создать доску"
+    edit:
+      header: "Изменить доску"
+    show:
+      header: "Информация о доске"
+      name: "Наименование доски:"
+      description: "Описание доски:"
+  cards:
+    index:
+      new_card: "Создать карту"
+    new:
+      header: "Создать карточку"
+    edit:
+      header: "Изменить карточку"
+    show:
+      card_header: "Вопрос"
+    

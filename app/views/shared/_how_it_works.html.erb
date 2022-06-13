@@ -1,27 +1,27 @@
 <div class="row gx-5 pt-3">  
-  <h3 class="display-5 lh-1 mb-3 text-center">Short instructions for interacting with the app</h3>
+  <h3 class="display-5 lh-1 mb-3 text-center"><%= t('.header') %></h3>
 </div>
 <div class="pb-5 align-content-center" align="center">
   <ol>
     <% if !current_user %>
     <li>
-      <p>Sign in or sign up</p>
+      <p><%= t('.step1') %></p>
     </li>
     <% end %>
     <li>
-      <p>Сreate your boards. Don't forget to add board name and description!</p>
+      <p><%= t('.step2') %></p>
     </li>
     <li>
-      <p>Fill your boards with informative cards. You can highlight your code in answers like code editors!</p>
+      <p><%= t('.step3') %></p>
     </li>
     <li>
-      <p>Watch your cards and repeat stuff!</p>
+      <p><%= t('.step4') %></p>
     </li>
     <li>
-      <p>You can also use board learning feature for quality training.</p>
+      <p><%= t('.step5') %></p>
     </li>
     <li>
-      <p>(New feature!)</p>
+      <p><%= t('.step6') %></p>
     </li>
   </ol>
 </div>

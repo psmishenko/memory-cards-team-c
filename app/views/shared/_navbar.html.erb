@@ -6,8 +6,8 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
-        <%= link_to "Manual", manual_path, class:"nav-link active" %>
+        <a class="nav-link active" aria-current="page" href="/"><%= t('.home') %></a>
+        <%= link_to t('.manual'), manual_path, class:"nav-link active" %>
       </div>
     </div>
   </div>
@@ -21,11 +21,11 @@
         <%= current_user.email%>
       </span>
     <% end %>
-    <%= link_to "Edit User", edit_user_registration_path, class:"btn btn-outline-light" %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
+    <%= link_to  t('.edit_user_button'), edit_user_registration_path, class:"btn btn-outline-light" %>
+    <%= link_to t('.sign_out_button'), destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
   <% else %>
-    <%= link_to "Sign In", new_user_session_path, class:"btn btn-outline-light" %>
-    <%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-light" %>
+    <%= link_to t('.sign_in_button'), new_user_session_path, class:"btn btn-outline-light" %>
+    <%= link_to t('.sign_up_button'), new_user_registration_path, class:"btn btn-outline-light" %>
   <% end %>
   <div class="dropdown">
   <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
