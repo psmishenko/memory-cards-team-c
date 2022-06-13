@@ -27,4 +27,4 @@ Rails/I18nLocaleTexts:
 RSpec/NestedGroups:
   Max: 4
 RSpec/MultipleMemoizedHelpers:
-  Max: 8
+  Max: 12
