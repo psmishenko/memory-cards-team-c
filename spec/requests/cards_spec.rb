@@ -4,8 +4,11 @@ require 'rails_helper'
 
 RSpec.describe 'Cards', type: :request do
   let(:user) { create :user }
-  let(:board) { create :board, user_id: user.id }
-  let(:card) { create :card, board_id: board.id }
+  let!(:board) { create :board, user_id: user.id }
+  let!(:card) { create :card, board_id: board.id }
+  let(:user2) { create :user, password: '89712345', email: 'test123@mail.com' }
+  let!(:board2) { create :board, user_id: user2.id }
+  let!(:card2) { create :card, board_id: board2.id }
   let(:correct_params) { { card: { question: 'Where is my car dude?', answer: 'Gone in Sixty Seconds' } } }
 
   context 'when the user is not logged in' do
@@ -76,48 +79,87 @@ RSpec.describe 'Cards', type: :request do
     before { login_as(user, scope: :user) }
 
     describe 'GET /index' do
-      before { get "/boards/#{board.id}/cards/" }
+      context 'when a user owns a given board' do
+        before { get "/boards/#{board.id}/cards/" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include(board.name.to_s) }
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include(board.name.to_s) }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/cards/" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board/card") }
+      end
     end
 
     describe 'GET /show' do
-      before { get "/boards/#{board.id}/cards/#{card.id}" }
+      context 'when a user owns a given board' do
+        before { get "/boards/#{board.id}/cards/#{card.id}" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('Back to all cards') }
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include('Back to all cards') }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/cards/#{card2.id}" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board/card") }
+      end
     end
 
     describe 'GET /new' do
-      before { get "/boards/#{board.id}/cards/new" }
+      context 'when a user owns a given board' do
+        before { get "/boards/#{board.id}/cards/new" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('New card') }
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include('New card') }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/cards/new" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board/card") }
+      end
     end
 
     describe 'GET /edit' do
-      before { get "/boards/#{board.id}/cards/#{card.id}/edit" }
+      context 'when a user owns a given board' do
+        before { get "/boards/#{board.id}/cards/#{card.id}/edit" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('Edit card') }
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include('Edit card') }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/cards/edit" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board/card") }
+      end
     end
 
     describe 'GET /learning' do
-      before do
-        board
-        card
-        get "/boards/#{board.id}/learning"
+      before { get "/boards/#{board.id}/learning" }
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/learning" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board/card") }
       end
 
-      context 'when board has no cards' do
+      context 'when the user has board with no cards' do
         let(:card) { nil }
 
         it { is_expected.to redirect_to(board_cards_path(board)) }
         it { expect(flash[:notice]).to include('Add cards before starting learning!') }
       end
 
-      context 'when board has cards' do
+      context 'when the user has boards with cards' do
         it { expect(response).to render_template(:learning) }
       end
     end
