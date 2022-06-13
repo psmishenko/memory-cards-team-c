@@ -18,6 +18,9 @@ module Mcapp
     config.action_view.field_error_proc = Proc.new { |html_tag, instance| 
   html_tag
 }
+    # Permitted locales available for the application
+    config.i18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :en
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

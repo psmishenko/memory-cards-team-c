@@ -1,0 +1,8 @@
+
+ru:
+  ru: 'Русский'
+  en: 'Английский'
+  
+  global:
+    boards_button: "Доски"
+    welcome: "Добро пожаловать в Memory Cards!"
