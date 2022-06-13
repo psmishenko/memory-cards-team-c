@@ -4,8 +4,8 @@ require 'rails_helper'
 RSpec.describe 'Boards', type: :request do
   let(:user) { create :user }
   let(:user2) { create :user, password: '89712345', email: 'test123@mail.com' }
-  let(:board) { create :board, user_id: user.id }
-  let(:board2) { create :board, user_id: user2.id }
+  let!(:board) { create :board, user_id: user.id }
+  let!(:board2) { create :board, user_id: user2.id }
 
   context 'when the user is not logged in' do
     describe 'GET /index' do
@@ -67,11 +67,7 @@ RSpec.describe 'Boards', type: :request do
     before { sign_in(user, scope: :user) }
 
     describe 'GET /index' do
-      before do
-        board
-        board2
-        get '/boards'
-      end
+      before { get '/boards' }
 
       include_examples 'when the user is logged in', '/boards', 'Boards'
 
