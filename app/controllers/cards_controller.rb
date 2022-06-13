@@ -61,7 +61,8 @@ class CardsController < ApplicationController
   end
 
   def find_board
-    @board = Board.find(params[:board_id])
+    @board = current_user.boards.find_by(id: params[:board_id])
+    redirect_to boards_path, flash: { error: "You don't have access to this board" } if @board.nil?
   end
 
   def flash_error

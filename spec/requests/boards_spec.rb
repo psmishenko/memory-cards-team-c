@@ -3,7 +3,9 @@
 require 'rails_helper'
 RSpec.describe 'Boards', type: :request do
   let(:user) { create :user }
-  let(:board) { create :board, user_id: user.id }
+  let(:user2) { create :user, password: '89712345', email: 'test123@mail.com' }
+  let!(:board) { create :board, user_id: user.id }
+  let!(:board2) { create :board, user_id: user2.id }
 
   context 'when the user is not logged in' do
     describe 'GET /index' do
@@ -65,14 +67,29 @@ RSpec.describe 'Boards', type: :request do
     before { sign_in(user, scope: :user) }
 
     describe 'GET /index' do
+      before { get '/boards' }
+
       include_examples 'when the user is logged in', '/boards', 'Boards'
+
+      context 'when user has boards' do
+        it { expect(assigns(:boards)).to contain_exactly(board) }
+      end
     end
 
     describe 'GET /show' do
       before { get "/boards/#{board.id}" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('Board information') }
+      context 'when a user owns a given board' do
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include('Board information') }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board") }
+      end
     end
 
     describe 'GET /new' do
@@ -82,8 +99,17 @@ RSpec.describe 'Boards', type: :request do
     describe 'GET /edit' do
       before { get "/boards/#{board.id}/edit" }
 
-      it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('Edit board') }
+      context 'when a user owns a given board' do
+        it { expect(response).to have_http_status(:ok) }
+        it { expect(response.body).to include('Edit board') }
+      end
+
+      context 'when the user does not own the board' do
+        before { get "/boards/#{board2.id}/edit" }
+
+        it { is_expected.to redirect_to(boards_path) }
+        it { expect(flash[:error]).to include("You don't have access to this board") }
+      end
     end
 
     describe 'POST /create' do

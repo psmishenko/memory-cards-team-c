@@ -5,7 +5,7 @@ class BoardsController < ApplicationController
   before_action :find_board, except: %i[index new create]
 
   def index
-    @boards = Board.all
+    @boards = current_user.boards
   end
 
   def new
@@ -48,7 +48,8 @@ class BoardsController < ApplicationController
   end
 
   def find_board
-    @board = Board.find(params[:id])
+    @board = current_user.boards.find_by(id: params[:id])
+    redirect_to boards_path, flash: { error: "You don't have access to this board" } if @board.nil?
   end
 
   def flash_error
