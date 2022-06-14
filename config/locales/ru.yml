@@ -3,6 +3,7 @@ ru:
   ru: 'Русский'
   en: 'Английский'
 
+# ACTIVE_RECORD
   activerecord:
       models:
         user:
@@ -12,26 +13,28 @@ ru:
           one: "Доска"
           other: "Доски"
         card:
-          one: "Каточка"
+          one: "Карточка"
           other: "Карточки"
+      attributes:
+        card:
+          question: "Вопрос"
+          answer: "Ответ"
       errors:
         models:
           card:
             attributes:
               question:
-                blank: "Вопрос обязателен!"
-                too_long: "%<count>s символов - максимально допустимое значение"
+                blank: " обязателен!"
+                too_long: "Максимально допустимо - %<count>s символов"
               answer:
-                blank: "Ответ обязателен!"
-
+                blank: " обязателен!"
+# GLOBAL
   global:
     boards_button: "Доски"
-    board_content_button: "Контент доски"
-    new_board_button: "Новая доска"
+    back_to_boards: "Вернуться к доскам"
+    back_to_cards: "Вернуться к карточкам"
     confirm_deletion: "Вы уверены?"
     form:
-      question_placeholder: "Введите вопрос"
-      answer_placeholder: "Введите ответ"
       email_label: "Электронная почта"
       password_label: "Пароль"
       password_placeholder: "Введите ваш пароль"
@@ -58,6 +61,16 @@ ru:
           description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля"
           submit: "Выслать"
   
+# ERRORS PAGES
+  errors:
+    internal_error:
+      message: 'Внутренняя ошибка сервера'
+    not_found:
+      message: 'Страница не найдена'
+    unacceptable:
+      message: 'Необрабатываемый экземпляр'
+
+# SHARED  
   shared:
       navbar:
         home: "Главная"
@@ -81,28 +94,47 @@ ru:
         welcome: "Добро пожаловать в Memory Cards!"
         welcome2: "Это приложение поможет вам более эффективно изучать различные темы."
         welcome3: "Приступим к обучению! Зарегистрируйтесь или войдите в существующую учетную запись"
+        welcome4: "Привет, %{username}! Проверьте свои доски! Нажмите на кнопку внизу!"
       manual:
         header: "Добро пожаловать в мануал!"
 
-
+# BOARDS
   boards:
     index:
       header: "Ваши доски"
+      learn_button: "Учить"
+      new_board_button: "Новая доска"
+    form:
+      name_label: "Наименование"
+      name_placeholder: "Введите наименование доски"
+      description_label: "Описание"
+      description_placeholder: "Введите описание доски"
+      submit: "Отправить"
     new:
       header: "Создать доску"
+      submit: "Создать доску"
     edit:
       header: "Изменить доску"
+      submit: "Изменить доску"
     show:
       header: "Информация о доске"
       name: "Наименование доски:"
       description: "Описание доски:"
+   
+# CARDS      
   cards:
     index:
-      new_card: "Создать карту"
+      new_card: "Создать карточку"
+    form:
+      question_placeholder: "Введите вопрос"
+      answer_placeholder: "Введите ответ"
+      submit: "Отправить"
     new:
       header: "Создать карточку"
     edit:
       header: "Изменить карточку"
     show:
       card_header: "Вопрос"
-    
+    learning:
+      header: "Изучение темы %{board_name}"
+      card_header: "Вопрос №%{number}"

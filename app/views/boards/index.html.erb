@@ -1,4 +1,7 @@
-<h1>Boards</h1>
+<h1><%= t('.header') %></h1>
+<%= button_to new_board_path, method: 'get', class: "btn btn-outline-dark" do%>
+<span class="bi bi-bookmark-plus"><%= t('.new_board_button') %></span>
+<% end %>
 <div class="row row-cols-lg-4">
  <% @boards.each do |board| %>
  <div class="col card border-dark m-3">
@@ -11,12 +14,12 @@
   <div class="card-footer d-flex justify-content-center bg-transparent border-top-0">
     <div class="btn-group" role="group" aria-label="Basic example">
       <%= button_to(board_learning_path(board),method: 'get', class: "btn btn-success") do%>
-      <i class="bi bi-file-play">Learn</i>
+      <i class="bi bi-file-play"><%= t('.learn_button') %></i>
       <% end %>
       <%= button_to(edit_board_path(board), method: 'get', class: "btn btn-primary") do%>
       <i class="bi bi-pencil-fill"></i>
       <% end %>
-      <%= button_to(board_path(board), method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?'}) do%>
+      <%= button_to(board_path(board), method: 'delete', class: "btn btn-danger", data: { confirm: t('global.confirm_deletion')}) do%>
       <i class="bi bi-trash-fill"></i>
       <% end %>
     </div>
@@ -24,7 +27,3 @@
 </div>
 <% end %>
 </div>
-<br>
-<%= button_to new_board_path, method: 'get', class: "btn btn-outline-dark" do%>
-<span class="bi bi-bookmark-plus">New board</span>
-<% end %>

@@ -3,6 +3,7 @@ en:
   ru: 'Russian'
   en: 'English'
 
+# ACTIVE_RECORD
   activerecord:
     models:
       user:
@@ -14,28 +15,28 @@ en:
       card:
         one: "Card"
         other: "Cards"
+        attributes:
+          question: "Question"
+          answer: "Answer"
     errors:
       models:
         card:
           attributes:
             question:
-              blank: "Question is required!"
+              blank: " is required!"
               too_long: "%<count>s characters is the maximum allowed"
             answer:
-              blank: "Answer is required!"
+              blank: "is required!"
 
+# GLOBAL
   global:
     boards_button: "Boards"
     board_content_button: "Board content"
-    new_board_button: "New board"
     confirm_deletion: "Are you sure?"
     form:
-      question_placeholder: "Insert a question"
-      answer_placeholder: "Insert an answer"
       email_label: "Email"
       password_label: "Password"
       password_placeholder: "Insert your password"
-      submit: "Submit"
     devise:
       shared:
         links:
@@ -58,7 +59,16 @@ en:
           description: "Enter your email and we will send you instructions to generate a new password."
           submit: "Send instructions"
 
+# ERRORS PAGES
+  errors:
+    internal_error:
+      message: 'Internal Server Error'
+    not_found:
+      message: 'Page Not Found'
+    unacceptable:
+      message: 'Unprocessable Entity'
 
+# SHARED      
   shared:
       navbar:
         home: "Home"
@@ -82,11 +92,23 @@ en:
         welcome: "Welcome to Memory cards app!"
         welcome2: "This application will help you to study various topics more effectively."
         welcome3: "Let's start learning! Register or login to an existing account"
+        welcome4: "Привет, %{username}! Check your boards! Click on the button below!"
       manual:
         header: "Welcome to manual!"
+
+# BOARDS
   boards:
+    back_to_boards: "Back to boards"
     index:
       header: "Your boards"
+      learn_button: "Learn"
+      new_board_button: "New board"
+    form:
+      name_label: "Name"
+      name_placeholder: "Insert bord name"
+      description_label: "Description"
+      description_placeholder: "Insert bord description"
+      submit: "Submit"
     new:
       header: "Create a board"
     edit:
@@ -95,12 +117,21 @@ en:
       header: "Board information"
       name: "Board name:"
       description: "Board description:"
+
+# CARDS
   cards:
     index:
       new_card: "New card"
+    form:
+      question_placeholder: "Insert a question"
+      answer_placeholder: "Insert an answer"
+      submit: "Submit"
     new:
       header: "New card"
     edit:
       header: "Edit card"
     show:
       card_header: "Question"
+    learning:
+      header: "%{board_name} learning"
+      card_header: "Question №%{number}"

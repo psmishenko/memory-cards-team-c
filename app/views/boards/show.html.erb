@@ -1,5 +1,5 @@
-<h1>Board information</h1>
-<h3>Board name: <%= @board.name %></h3>
-<h3>Board description: "<%= @board.description %>"</h3>
+<h1><%= t('.header') %></h1>
+<h3><%= t('.name') %> <%= @board.name %></h3>
+<h3><%= t('.description') %> <%= @board.description %></h3>
 <br />
-<%= link_to "Back to all boards", boards_path %>
+<%= link_to t('global.back_to_boards'), boards_path, class: "btn btn-outline-dark" %>

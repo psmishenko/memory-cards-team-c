@@ -3,12 +3,12 @@
 <div class="d-flex flex-row">
   <div class="p-1">
     <%= button_to boards_path, method: 'get', class: "btn btn-outline-dark" do %>
-    <span class="bi bi-bookmark-heart">Boards</span>
+    <span class="bi bi-bookmark-heart"><%= t('global.boards_button') %></span>
     <% end %>
   </div>
   <div class="p-1">
     <%= button_to new_board_card_path(@board), method: 'get', class: "btn btn-outline-dark" do%>
-    <span class="bi bi-plus-circle"> New card</span>
+    <span class="bi bi-plus-circle"> <%= t('.new_card') %></span>
     <% end %>
   </div>
 </div>
@@ -29,7 +29,7 @@
     <%= button_to(edit_board_card_path(@board,card), method: 'get', class: "btn btn-primary") do%>
     <i class="bi bi-pencil-fill"></i>
     <% end %>
-    <%= button_to([@board, card], method: 'delete', class: "btn btn-danger", data: { confirm: 'Are you sure?' }) do%>
+    <%= button_to([@board, card], method: 'delete', class: "btn btn-danger", data: { confirm: t('global.confirm_deletion') }) do%>
     <i class="bi bi-trash-fill"></i>
     <% end %>
   </div>
