@@ -1,25 +1,27 @@
 <div class="row d-flex justify-content-around">
   <div class="col-md-6 p-1">
-    <h2>Edit <%= resource_name.to_s.humanize %></h2>
+    <h2><%= t('.header') %></h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <%= f.label :name, class: "form-label"%><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: "Insert your name" %>
+    <%= f.label :name, t('.user_name_label'), class: "form-label"%><br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control", placeholder: t('.user_name_placeholder') %>
 
-    <%= f.label :email, class: "form-label"%><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Insert your email" %>
-    <div>
-      <%= link_to "Change your password", edit_user_path%>
-    </div>
-    <%= button_to "Update account", registration_path(resource_name), method: :update, class: "btn btn-success" %>
+    <%= f.label :email, t('global.form.email_label'), class: "form-label"%><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('global.form.email_placeholder')%>
+    <%= button_to t('.submit'), registration_path(resource_name), method: :update, class: "btn btn-success" %>
   </div >
   
   <div class="col-md-5 p-1">
-    <h2>Delete my account</h2>
-    <p class="mb-1">You can delete your account at any time. Just press button below</p>
-    <%= button_to "Delete account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
-
+    <h2><%= t('.header2') %></h2>
+    <p class="mb-1"><%= t('.description2') %></p>
+    <%= button_to t('.delete_account'), registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
   <% end %>
+  <div class="pt-1">
+    <h2><%= t('.header3') %></h2>
+    <p class="mb-1"><%= t('.description3') %></p>
+      <%= link_to t('.change_password'), edit_user_path, class: "btn btn-primary" %>
+    </div>
+</div>
 </div>

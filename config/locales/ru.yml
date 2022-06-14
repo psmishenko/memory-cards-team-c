@@ -36,30 +36,48 @@ ru:
     confirm_deletion: "Вы уверены?"
     form:
       email_label: "Электронная почта"
+      email_placeholder: "Введите вашу электронную почту"
       password_label: "Пароль"
       password_placeholder: "Введите ваш пароль"
-      submit: "Отправить"
-    devise:
-      shared:
-        links:
-          log_in_button: "Войти"
-          sign_up_button: "Регистрация"
-          forgot_password_button: "Забыли пароль?"
-      sessions:
-          header: "Войти в аккаунт"
-          remember_me_label: "Запомнить"
-          submit: "Войти"
-      registrations:
-        new:
-          header: "Регистрация аккаунта"
-          password_label_em: "символов минимум"
-          password_confirmation: "Подтверждение пароля"
-          submit: "Регистрация"
-      passwords:
-        new:
-          header: "Забыли свой пароль?"
-          description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля"
-          submit: "Выслать"
+
+# DEVISE
+  devise:
+    shared:
+      links:
+        log_in: "Войти"
+        sign_up: "Регистрация"
+        forgot_password: "Забыли пароль?"
+    sessions:
+      new:
+        header: "Войти в аккаунт"
+        remember_me_label: "Запомнить"
+        submit: "Войти"
+    registrations:
+      new:
+        header: "Регистрация аккаунта"
+        user_name_label: "Имя"
+        user_name_placeholder: "Введите ваше имя"
+        password_label_em: "%{number} символов минимум"
+        password_confirmation: "Подтверждение пароля"
+        password_confirmation_placeholder: "Подтвердите ваш пароль"
+        submit: "Регистрация"
+      edit:
+        header: "Правка пользователя"
+        header2: "Удалить мой аккаунт"
+        header3: "Изменить мой пароль"
+        user_name_label: "Имя"
+        user_name_placeholder: "Введите имя"
+        description2: "Вы можете удалить ваш аккаунт в любое время. Просто нажмите кнопку ниже"
+        description3: "Измените ваш пароль, если хотите этого. Просто нажмите кнопку ниже"
+        delete_account: "Удалить аккаунт"
+        change_password: "Изменить пароль"
+        submit: "Обновить"
+
+    passwords:
+      new:
+        header: "Забыли свой пароль?"
+        description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля."
+        submit: "Выслать"    
   
 # ERRORS PAGES
   errors:

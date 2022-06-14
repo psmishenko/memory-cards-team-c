@@ -35,14 +35,17 @@ en:
     confirm_deletion: "Are you sure?"
     form:
       email_label: "Email"
+      email_placeholder: "Insert your email"
       password_label: "Password"
       password_placeholder: "Insert your password"
-    devise:
+  
+# DEVISE      
+  devise:
       shared:
         links:
-          log_in_button: "Log in"
-          sign_up_button: "Sign up"
-          forgot_password_button: "Forgot your password?"
+          log_in: "Log in"
+          sign_up: "Sign up"
+          forgot_password: "Forgot your password?"
       sessions:
           header: "Log in"
           remember_me_label: "Remember me"
@@ -50,14 +53,28 @@ en:
       registrations:
         new:
           header: "Sign up"
-          password_label_em: "characters minimum"
+          user_name_label: "Name"
+          user_name_placeholder: "Insert your name"
+          password_label_em: "%{number} characters minimum"
           password_confirmation: "Password confirmation"
           submit: "Sign up"
+        edit:
+          header: "Edit user"
+          header2: "Delete my account"
+          header3: "Change my password"
+          user_name_label: "Name"
+          user_name_placeholder: "Insert your name"
+          description2: "You can delete your account at any time. Just press button below"
+          description3: "Сhange your password if you want. Just press button below"
+          delete_account: "Delete account"
+          change_password: "Change password"
+          submit: "Update"
+
       passwords:
         new:
           header: "Forgot your password?"
           description: "Enter your email and we will send you instructions to generate a new password."
-          submit: "Send instructions"
+          submit: "Send"  
 
 # ERRORS PAGES
   errors:
