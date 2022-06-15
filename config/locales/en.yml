@@ -27,11 +27,20 @@ en:
               too_long: "%<count>s characters is the maximum allowed"
             answer:
               blank: "is required!"
+        board:
+          attributes:
+            name:
+              blank: " is required!"
+              too_short: " %<count>s characters is the minimum allowed"
+            description:
+              blank: " is required!"
+              too_long: " %<count>s characters is the maximum allowed"
 
 # GLOBAL
   global:
     boards_button: "Boards"
-    board_content_button: "Board content"
+    back_to_boards: "Back to boards"
+    back_to_cards: "Back to all cards"
     confirm_deletion: "Are you sure?"
     form:
       email_label: "Email"
@@ -47,6 +56,7 @@ en:
           sign_up: "Sign up"
           forgot_password: "Forgot your password?"
       sessions:
+        new:
           header: "Log in"
           remember_me_label: "Remember me"
           submit: "Log in"
@@ -57,6 +67,7 @@ en:
           user_name_placeholder: "Insert your name"
           password_label_em: "%{number} characters minimum"
           password_confirmation: "Password confirmation"
+          password_confirmation_placeholder: "Confirm your password"
           submit: "Sign up"
         edit:
           header: "Edit user"
@@ -69,7 +80,6 @@ en:
           delete_account: "Delete account"
           change_password: "Change password"
           submit: "Update"
-
       passwords:
         new:
           header: "Forgot your password?"
@@ -113,30 +123,42 @@ en:
       manual:
         header: "Welcome to manual!"
 
+#USERS
+  users:
+    update:
+      success: 'Password updated'
+
 # BOARDS
   boards:
-    back_to_boards: "Back to boards"
+    no_access: "You don't have access to this board"
     index:
       header: "Your boards"
       learn_button: "Learn"
       new_board_button: "New board"
     form:
       name_label: "Name"
-      name_placeholder: "Insert bord name"
+      name_placeholder: "Insert board name"
       description_label: "Description"
-      description_placeholder: "Insert bord description"
+      description_placeholder: "Insert board description"
       submit: "Submit"
     new:
       header: "Create a board"
+    create:
+      success: 'Board created'
     edit:
       header: "Edit board"
+    update:
+      success: 'Board updated'
     show:
       header: "Board information"
       name: "Board name:"
       description: "Board description:"
+    destroy:
+      success: 'Board deleted'
 
 # CARDS
   cards:
+    no_access: "You don't have access to this board/card"
     index:
       new_card: "New card"
     form:
@@ -145,10 +167,17 @@ en:
       submit: "Submit"
     new:
       header: "New card"
+    create:
+      success: 'Card created'
     edit:
       header: "Edit card"
+    update:
+      success: 'Board updated'
     show:
       card_header: "Question"
     learning:
+      add_cards: 'Add cards before starting learning!'
       header: "%{board_name} learning"
       card_header: "Question №%{number}"
+    destroy:
+      success: 'Card deleted'

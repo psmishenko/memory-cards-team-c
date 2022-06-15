@@ -4,13 +4,13 @@
   <div class="col-md-5 mb-2 ">
     <div class="form-floating">
       <%= form.text_field :question, placeholder: "Question", class: "form-control #{'is-invalid' if card.errors.include?(:question)}", id: "floatingInput"%>
-      <%= form.label :question, "#{card.errors.include?(:question) ? card.errors[:question].first : t('.question_placeholder') }", for: "floatingInput"%>
+      <%= form.label :question, "#{card.errors.include?(:question) ? card.errors.full_messages_for(:question).sample : t('.question_placeholder') }", for: "floatingInput"%>
     </div>
   </div>
   <div class="col-md-7 mb-2">
     <div class="form-floating">
       <%= form.text_area :answer, placeholder: "answer", class: "form-control #{'is-invalid' if card.errors.include?(:answer)}", id: "floatingInputAnswer"%>
-      <%= form.label :answer, "#{card.errors.include?(:answer) ? card.errors[:answer].first : t('.answer_placeholder')}", for: "floatingInputAnswer"%>
+      <%= form.label :answer, "#{card.errors.include?(:answer) ? card.errors.full_messages_for(:answer).sample : t('.answer_placeholder')}", for: "floatingInputAnswer"%>
     </div>
   </div>
 </div>

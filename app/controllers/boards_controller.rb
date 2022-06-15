@@ -15,7 +15,7 @@ class BoardsController < ApplicationController
   def create
     @board = current_user.boards.build(board_params)
     if @board.save
-      flash[:success] = 'Board created'
+      flash[:success] = t('.success')
       redirect_to boards_path
     else
       flash_error
@@ -25,7 +25,7 @@ class BoardsController < ApplicationController
 
   def update
     if @board.update(board_params)
-      flash[:success] = 'Board updated'
+      flash[:success] = t('.success')
       redirect_to boards_path
     else
       flash_error
@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
-    flash[:warn] = 'Board deleted'
+    flash[:warn] = t('.success')
     redirect_to boards_path
   end
 
@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
 
   def find_board
     @board = current_user.boards.find_by(id: params[:id])
-    redirect_to boards_path, flash: { error: "You don't have access to this board" } if @board.nil?
+    redirect_to boards_path, flash: { error: t('no_access') } if @board.nil?
   end
 
   def flash_error

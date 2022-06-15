@@ -10,13 +10,11 @@ RSpec.describe Card, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:question).with_message('is required') }
-    it { is_expected.to validate_presence_of(:answer).with_message('is required') }
+    it { is_expected.to validate_presence_of(:question) }
+    it { is_expected.to validate_presence_of(:answer) }
 
     it {
-      expect(card)
-        .to validate_length_of(:question)
-        .is_at_most(200).with_message('200 characters is the maximum allowed')
+      expect(card).to validate_length_of(:question).is_at_most(200)
     }
   end
 end

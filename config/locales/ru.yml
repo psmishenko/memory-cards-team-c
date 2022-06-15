@@ -19,15 +19,29 @@ ru:
         card:
           question: "Вопрос"
           answer: "Ответ"
+        board:
+          name: "Наименование"
+          description: "Описание"
       errors:
         models:
           card:
             attributes:
               question:
                 blank: " обязателен!"
-                too_long: "Максимально допустимо - %<count>s символов"
+                too_long: "не должен превышать %{count} символов"
               answer:
                 blank: " обязателен!"
+          board:
+            attributes:
+              name:
+                blank: " обязательно!"
+                too_short: " не дожно быть меньше %{count} символов"
+              description:
+                blank: " обязательно!"
+                too_long: " не должно превышать %{count} символов"
+
+
+
 # GLOBAL
   global:
     boards_button: "Доски"
@@ -72,7 +86,6 @@ ru:
         delete_account: "Удалить аккаунт"
         change_password: "Изменить пароль"
         submit: "Обновить"
-
     passwords:
       new:
         header: "Забыли свой пароль?"
@@ -116,8 +129,15 @@ ru:
       manual:
         header: "Добро пожаловать в мануал!"
 
+#USERS
+  users:
+    update:
+      success: 'Пароль обновлен'
+
+
 # BOARDS
   boards:
+    no_access: "У вас нет доступа к этой доске"
     index:
       header: "Ваши доски"
       learn_button: "Учить"
@@ -131,16 +151,23 @@ ru:
     new:
       header: "Создать доску"
       submit: "Создать доску"
+    create:
+      success: "Доска создана"
     edit:
       header: "Изменить доску"
       submit: "Изменить доску"
+    update:
+      success: "Доска обновлена"
     show:
       header: "Информация о доске"
       name: "Наименование доски:"
       description: "Описание доски:"
+    destroy:
+      success: "Доска удалена"
    
 # CARDS      
   cards:
+    no_access: "У вас нет доступа к данной доске/карточке"
     index:
       new_card: "Создать карточку"
     form:
@@ -149,10 +176,17 @@ ru:
       submit: "Отправить"
     new:
       header: "Создать карточку"
+    create:
+      success: 'Карточка создана'
     edit:
       header: "Изменить карточку"
+    update:
+      success: 'Карточка обновлена'
     show:
       card_header: "Вопрос"
     learning:
+      add_cards: 'Добавьте карточек перед стартом обучения!'
       header: "Изучение темы %{board_name}"
       card_header: "Вопрос №%{number}"
+    destroy:
+      success: 'Карточка удалена'
