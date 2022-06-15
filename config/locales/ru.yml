@@ -27,20 +27,18 @@ ru:
           card:
             attributes:
               question:
-                blank: " обязателен!"
+                blank: "обязателен!"
                 too_long: "не должен превышать %{count} символов"
               answer:
-                blank: " обязателен!"
+                blank: "обязателен!"
           board:
             attributes:
               name:
-                blank: " обязательно!"
-                too_short: " не дожно быть меньше %{count} символов"
+                blank: "обязательно!"
+                too_short: "не дожно быть меньше %{count} символов"
               description:
-                blank: " обязательно!"
+                blank: "обязательно!"
                 too_long: " не должно превышать %{count} символов"
-
-
 
 # GLOBAL
   global:
@@ -134,7 +132,6 @@ ru:
     update:
       success: 'Пароль обновлен'
 
-
 # BOARDS
   boards:
     no_access: "У вас нет доступа к этой доске"
@@ -150,12 +147,10 @@ ru:
       submit: "Отправить"
     new:
       header: "Создать доску"
-      submit: "Создать доску"
     create:
       success: "Доска создана"
     edit:
       header: "Изменить доску"
-      submit: "Изменить доску"
     update:
       success: "Доска обновлена"
     show:

@@ -15,26 +15,30 @@ en:
       card:
         one: "Card"
         other: "Cards"
-        attributes:
-          question: "Question"
-          answer: "Answer"
+    attributes:
+      card:
+        question: "Question"
+        answer: "Answer"
+      board:
+        name: "Name"
+        description: "Description"
     errors:
       models:
         card:
           attributes:
             question:
-              blank: " is required!"
+              blank: "is required!"
               too_long: "%<count>s characters is the maximum allowed"
             answer:
               blank: "is required!"
         board:
           attributes:
             name:
-              blank: " is required!"
-              too_short: " %<count>s characters is the minimum allowed"
+              blank: "is required!"
+              too_short: "is too short (minimum is %<count>s characters)"
             description:
-              blank: " is required!"
-              too_long: " %<count>s characters is the maximum allowed"
+              blank: "is required!"
+              too_long: "is too long (maximum is %<count>s characters)"
 
 # GLOBAL
   global:
@@ -70,7 +74,7 @@ en:
           password_confirmation_placeholder: "Confirm your password"
           submit: "Sign up"
         edit:
-          header: "Edit user"
+          header: "Edit User"
           header2: "Delete my account"
           header3: "Change my password"
           user_name_label: "Name"
@@ -142,7 +146,7 @@ en:
       description_placeholder: "Insert board description"
       submit: "Submit"
     new:
-      header: "Create a board"
+      header: "Create board"
     create:
       success: 'Board created'
     edit:
@@ -172,7 +176,7 @@ en:
     edit:
       header: "Edit card"
     update:
-      success: 'Board updated'
+      success: 'Card updated'
     show:
       card_header: "Question"
     learning:

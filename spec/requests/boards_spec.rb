@@ -38,7 +38,7 @@ RSpec.describe 'Boards', type: :request do
     end
 
     describe 'PATCH /update' do
-      before { patch board_url(board), params: { board: { name: 'My Board', description: 'Test' } } }
+      before { patch "/boards/#{board.id}", params: { board: { name: 'My Board', description: 'Test' } } }
 
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
@@ -69,7 +69,7 @@ RSpec.describe 'Boards', type: :request do
     describe 'GET /index' do
       before { get '/boards' }
 
-      include_examples 'when the user is logged in', '/boards', 'Boards'
+      include_examples 'when the user is logged in', '/boards', 'Your boards'
 
       context 'when user has boards' do
         it { expect(assigns(:boards)).to contain_exactly(board) }
@@ -93,7 +93,7 @@ RSpec.describe 'Boards', type: :request do
     end
 
     describe 'GET /new' do
-      include_examples 'when the user is logged in', '/boards/new', 'Create Board'
+      include_examples 'when the user is logged in', '/boards/new', 'Create board'
     end
 
     describe 'GET /edit' do
@@ -125,14 +125,14 @@ RSpec.describe 'Boards', type: :request do
         before { post '/boards', params: { board: { name: '', description: 'Test' } } }
 
         it { expect(response).to render_template(:new) }
-        it { expect(flash[:error]).to include("Name can't be blank") }
+        it { expect(flash[:error]).to include('Name is required!') }
       end
 
       context 'when description is empty' do
         before { post '/boards', params: { board: { name: 'My Board', description: '' } } }
 
         it { expect(response).to render_template(:new) }
-        it { expect(flash[:error]).to include("Description can't be blank") }
+        it { expect(flash[:error]).to include('Description is required!') }
       end
 
       context 'when name is too short' do
@@ -152,7 +152,7 @@ RSpec.describe 'Boards', type: :request do
 
     describe 'PATCH /update' do
       before do
-        patch board_url(board), params: { board: { name: 'My Board', description: 'Test' } }
+        patch "/boards/#{board.id}", params: { board: { name: 'My Board', description: 'Test' } }
         follow_redirect!
       end
 
@@ -161,28 +161,28 @@ RSpec.describe 'Boards', type: :request do
       it { expect(flash[:success]).to include('Board updated') }
 
       context 'when name is empty' do
-        before { patch board_url(board), params: { board: { name: '', description: 'Test' } } }
+        before { patch "/boards/#{board.id}", params: { board: { name: '', description: 'Test' } } }
 
         it { expect(response).to render_template(:edit) }
-        it { expect(flash[:error]).to include("Name can't be blank") }
+        it { expect(flash[:error]).to include('Name is required!') }
       end
 
       context 'when description is empty' do
-        before { patch board_url(board), params: { board: { name: 'My Board', description: '' } } }
+        before { patch "/boards/#{board.id}", params: { board: { name: 'My Board', description: '' } } }
 
         it { expect(response).to render_template(:edit) }
-        it { expect(flash[:error]).to include("Description can't be blank") }
+        it { expect(flash[:error]).to include('Description is required!') }
       end
 
       context 'when name is too short' do
-        before { patch board_url(board), params: short_name }
+        before { patch "/boards/#{board.id}", params: short_name }
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include('Name is too short (minimum is 2 characters)') }
       end
 
       context 'when description is too long' do
-        before { patch board_url(board), params: long_description }
+        before { patch "/boards/#{board.id}", params: long_description }
 
         it { expect(response).to render_template(:edit) }
         it { expect(flash[:error]).to include('Description is too long (maximum is 200 characters)') }
@@ -194,12 +194,12 @@ RSpec.describe 'Boards', type: :request do
 
       it 'is expected that the number of boards will decrease by 1' do
         expect do
-          delete board_url(board1)
+          delete "/boards/#{board1.id}"
         end.to change(Board, :count).by(-1)
       end
 
       it 'is expected to include "Board deleted"' do
-        delete board_url(board1)
+        delete "/boards/#{board1.id}"
         expect(flash[:warn]).to include('Board deleted')
       end
     end

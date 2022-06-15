@@ -49,7 +49,7 @@ class BoardsController < ApplicationController
 
   def find_board
     @board = current_user.boards.find_by(id: params[:id])
-    redirect_to boards_path, flash: { error: t('no_access') } if @board.nil?
+    redirect_to boards_path, flash: { error: t('.no_access') } if @board.nil?
   end
 
   def flash_error
