@@ -131,6 +131,11 @@ en:
   users:
     update:
       success: 'Password updated'
+    edit:
+      header: "Change my password"
+      password_confirmation: "Password confirmation"
+      password_confirmation_placeholder: "Confirm your password"
+      submit: "Update"
 
 # BOARDS
   boards:

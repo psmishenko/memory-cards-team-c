@@ -131,6 +131,11 @@ ru:
   users:
     update:
       success: 'Пароль обновлен'
+    edit:
+      header: "Изменить пароль"
+      password_confirmation: "Подтверждение пароля"
+      password_confirmation_placeholder: "Подтвердите ваш пароль"
+      submit: "Обновить пароль"
 
 # BOARDS
   boards:
