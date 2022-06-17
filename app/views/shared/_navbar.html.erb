@@ -21,11 +21,11 @@
     <%= current_user.email%>
   </span>
   <% end %>
-  <%= link_to  t('.edit_user_button'), edit_user_registration_path, class:"btn btn-outline-light" %>
-  <%= link_to t('.sign_out_button'), destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
+  <%= link_to  t('.button.edit_user'), edit_user_registration_path, class:"btn btn-outline-light" %>
+  <%= link_to t('.button.sign_out'), destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
   <% else %>
-  <%= link_to t('.sign_in_button'), new_user_session_path, class:"btn btn-outline-light" %>
-  <%= link_to t('.sign_up_button'), new_user_registration_path, class:"btn btn-outline-light" %>
+  <%= link_to t('.button.sign_in'), new_user_session_path, class:"btn btn-outline-light" %>
+  <%= link_to t('.button.sign_up'), new_user_registration_path, class:"btn btn-outline-light" %>
   <% end %>
   <div class="dropdown">
     <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">

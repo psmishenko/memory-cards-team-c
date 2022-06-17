@@ -16,7 +16,7 @@ class CardsController < ApplicationController
   def create
     @card = @board.cards.build(card_params)
     if @card.save
-      flash[:success] = t('.success')
+      flash[:success] = t('flash.cards.create.success')
       redirect_to board_cards_path
     else
       flash_error
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      flash[:success] = t('.success')
+      flash[:success] = t('flash.cards.update.success')
       redirect_to board_cards_path
     else
       flash_error
@@ -36,14 +36,14 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    flash[:warn] = t('.success')
+    flash[:warn] = t('flash.cards.destroy.success')
     redirect_to board_cards_path
   end
 
   def learning
     @cards = @board.cards
     if @cards.empty?
-      redirect_to board_cards_path(@board), notice: t('.add_cards')
+      redirect_to board_cards_path(@board), notice: t('flash.cards.learning.add_cards')
     else
       render 'learning'
     end
@@ -62,7 +62,7 @@ class CardsController < ApplicationController
 
   def find_board
     @board = current_user.boards.find_by(id: params[:board_id])
-    redirect_to boards_path, flash: { error: t('.no_access') } if @board.nil?
+    redirect_to boards_path, flash: { error: t('flash.cards.no_access') } if @board.nil?
   end
 
   def flash_error

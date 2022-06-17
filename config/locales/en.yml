@@ -25,27 +25,25 @@ en:
     errors:
       models:
         card:
+          blank: "is required!"
           attributes:
             question:
-              blank: "is required!"
               too_long: "%<count>s characters is the maximum allowed"
-            answer:
-              blank: "is required!"
         board:
+          blank: "is required!"
           attributes:
             name:
-              blank: "is required!"
               too_short: "is too short (minimum is %<count>s characters)"
             description:
-              blank: "is required!"
               too_long: "is too long (maximum is %<count>s characters)"
 
 # GLOBAL
   global:
-    boards_button: "Boards"
-    back_to_boards: "Back to boards"
-    back_to_cards: "Back to all cards"
     confirm_deletion: "Are you sure?"
+    button:      
+      boards: "Boards"
+      back_to_boards: "Back to boards"
+      back_to_cards: "Back to all cards"
     form:
       email_label: "Email"
       email_placeholder: "Insert your email"
@@ -104,10 +102,11 @@ en:
       navbar:
         home: "Home"
         manual: "Manual"
-        edit_user_button: "Edit user"
-        sign_out_button: "Sign out"
-        sign_in_button: "Sign in"
-        sign_up_button: "Sign up"
+        button:
+          edit_user: "Edit user"
+          sign_out: "Sign out"
+          sign_in: "Sign in"
+          sign_up: "Sign up"
       how_it_works:
         header: "Short instructions for interacting with the app"
         step1: "Sign in or sign up"
@@ -123,14 +122,38 @@ en:
         welcome: "Welcome to Memory cards app!"
         welcome2: "This application will help you to study various topics more effectively."
         welcome3: "Let's start learning! Register or login to an existing account"
-        welcome4: "Привет, %{username}! Check your boards! Click on the button below!"
+        welcome4: "Hello, %{username}! Check your boards! Click on the button below!"
       manual:
         header: "Welcome to manual!"
 
+
+# FLASH MESSAGES
+  flash:
+    users:
+      update:
+        success: 'Password updated'
+    boards:
+      no_access: "You don't have access to this board"
+      create:
+        success: 'Board created'
+      update:
+        success: 'Board updated'
+      destroy:
+        success: 'Board deleted'
+    cards:
+      no_access: "You don't have access to this board/card"
+      create:
+        success: 'Card created'
+      update:
+        success: 'Card updated'
+      destroy:
+        success: 'Card deleted'
+      learning:
+        add_cards: 'Add cards before starting learning!'
+
+
 #USERS
   users:
-    update:
-      success: 'Password updated'
     edit:
       header: "Change my password"
       password_confirmation: "Password confirmation"
@@ -139,7 +162,6 @@ en:
 
 # BOARDS
   boards:
-    no_access: "You don't have access to this board"
     index:
       header: "Your boards"
       learn_button: "Learn"
@@ -152,22 +174,15 @@ en:
       submit: "Submit"
     new:
       header: "Create board"
-    create:
-      success: 'Board created'
     edit:
       header: "Edit board"
-    update:
-      success: 'Board updated'
     show:
       header: "Board information"
       name: "Board name:"
       description: "Board description:"
-    destroy:
-      success: 'Board deleted'
 
 # CARDS
   cards:
-    no_access: "You don't have access to this board/card"
     index:
       new_card: "New card"
     form:
@@ -176,17 +191,10 @@ en:
       submit: "Submit"
     new:
       header: "New card"
-    create:
-      success: 'Card created'
     edit:
       header: "Edit card"
-    update:
-      success: 'Card updated'
     show:
       card_header: "Question"
     learning:
-      add_cards: 'Add cards before starting learning!'
       header: "%{board_name} learning"
       card_header: "Question №%{number}"
-    destroy:
-      success: 'Card deleted'

@@ -25,27 +25,26 @@ ru:
       errors:
         models:
           card:
+            blank: "обязателен!"
             attributes:
               question:
-                blank: "обязателен!"
                 too_long: "не должен превышать %{count} символов"
               answer:
-                blank: "обязателен!"
           board:
+            blank: "обязательно!"
             attributes:
-              name:
-                blank: "обязательно!"
+              name: 
                 too_short: "не дожно быть меньше %{count} символов"
               description:
-                blank: "обязательно!"
                 too_long: " не должно превышать %{count} символов"
 
 # GLOBAL
   global:
-    boards_button: "Доски"
-    back_to_boards: "Вернуться к доскам"
-    back_to_cards: "Вернуться к карточкам"
     confirm_deletion: "Вы уверены?"
+    button:
+      boards: "Доски"
+      back_to_boards: "Вернуться к доскам"
+      back_to_cards: "Вернуться к карточкам"
     form:
       email_label: "Электронная почта"
       email_placeholder: "Введите вашу электронную почту"
@@ -104,10 +103,11 @@ ru:
       navbar:
         home: "Главная"
         manual: "Мануал"
-        edit_user_button: "Профиль"
-        sign_out_button: "Выйти"
-        sign_in_button: "Войти"
-        sign_up_button: "Регистрация"
+        button:
+          edit_user: "Профиль"
+          sign_out: "Выйти"
+          sign_in: "Войти"
+          sign_up: "Регистрация"
       how_it_works:
         header: "Краткая инструкция по работе с приложением"
         step1:  "Зарегистрируйтесь или войдите в ваш аккаунт"
@@ -127,10 +127,32 @@ ru:
       manual:
         header: "Добро пожаловать в мануал!"
 
+# FLASH MESSAGES
+  flash:
+    users:
+      update:
+        success: 'Пароль обновлен'
+    boards:
+      no_access: "У вас нет доступа к этой доске"
+      create:
+        success: "Доска создана"
+      update:
+        success: "Доска обновлена"
+      destroy:
+        success: "Доска удалена"
+    cards:
+      no_access: "У вас нет доступа к данной доске/карточке"
+      create:
+        success: 'Карточка создана'
+      update:
+        success: 'Карточка обновлена'
+      destroy:
+        success: 'Карточка удалена'
+      learning:
+        add_cards: 'Добавьте карточек перед стартом обучения!'
+
 #USERS
   users:
-    update:
-      success: 'Пароль обновлен'
     edit:
       header: "Изменить пароль"
       password_confirmation: "Подтверждение пароля"
@@ -139,7 +161,6 @@ ru:
 
 # BOARDS
   boards:
-    no_access: "У вас нет доступа к этой доске"
     index:
       header: "Ваши доски"
       learn_button: "Учить"
@@ -152,22 +173,15 @@ ru:
       submit: "Отправить"
     new:
       header: "Создать доску"
-    create:
-      success: "Доска создана"
     edit:
       header: "Изменить доску"
-    update:
-      success: "Доска обновлена"
     show:
       header: "Информация о доске"
       name: "Наименование доски:"
       description: "Описание доски:"
-    destroy:
-      success: "Доска удалена"
    
 # CARDS      
   cards:
-    no_access: "У вас нет доступа к данной доске/карточке"
     index:
       new_card: "Создать карточку"
     form:
@@ -176,17 +190,10 @@ ru:
       submit: "Отправить"
     new:
       header: "Создать карточку"
-    create:
-      success: 'Карточка создана'
     edit:
       header: "Изменить карточку"
-    update:
-      success: 'Карточка обновлена'
     show:
       card_header: "Вопрос"
     learning:
-      add_cards: 'Добавьте карточек перед стартом обучения!'
       header: "Изучение темы %{board_name}"
       card_header: "Вопрос №%{number}"
-    destroy:
-      success: 'Карточка удалена'
