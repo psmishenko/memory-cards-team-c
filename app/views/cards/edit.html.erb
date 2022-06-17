@@ -1,6 +1,3 @@
-<h1>Edit card</h1>
-
+<h1><%= t('.header') %></h1>
+<%= link_to t('global.button.back_to_cards'), board_cards_path(@board), class: "btn btn-outline-dark" %>
 <%= render 'form', card: @card %>
-
-<br />
-<%= link_to "Back to all cards", board_cards_path(@board) %>

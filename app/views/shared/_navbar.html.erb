@@ -6,25 +6,37 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/">Home</a>
-        <%= link_to "Manual", manual_path, class:"nav-link active" %>
+        <a class="nav-link active" aria-current="page" href="/"><%= t('.home') %></a>
+        <%= link_to t('.manual'), manual_path, class:"nav-link active" %>
       </div>
     </div>
   </div>
   <% if current_user %>
-    <% if current_user.name.present? %>
-      <span class="navbar-text">
-        <%= current_user.name%>
-      </span>
-    <% else %>
-      <span class="navbar-text">
-        <%= current_user.email%>
-      </span>
-    <% end %>
-    <%= link_to "Edit User", edit_user_registration_path, class:"btn btn-outline-light" %>
-    <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
+  <% if current_user.name.present? %>
+  <span class="navbar-text">
+    <%= current_user.name%>
+  </span>
   <% else %>
-    <%= link_to "Sign In", new_user_session_path, class:"btn btn-outline-light" %>
-    <%= link_to "Sign up", new_user_registration_path, class:"btn btn-outline-light" %>
+  <span class="navbar-text">
+    <%= current_user.email%>
+  </span>
   <% end %>
+  <%= link_to  t('.button.edit_user'), edit_user_registration_path, class:"btn btn-outline-light" %>
+  <%= link_to t('.button.sign_out'), destroy_user_session_path, method: :delete, class:"btn btn-outline-danger" %>
+  <% else %>
+  <%= link_to t('.button.sign_in'), new_user_session_path, class:"btn btn-outline-light" %>
+  <%= link_to t('.button.sign_up'), new_user_registration_path, class:"btn btn-outline-light" %>
+  <% end %>
+  <div class="dropdown">
+    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= t(locale) %>
+    </button>
+    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+      <% I18n.available_locales.each do |locale| %>
+      <li>
+        <%= link_to t(locale), url_for(locale: locale), data: { turbolinks: false },  class: "dropdown-item" %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
 </nav>

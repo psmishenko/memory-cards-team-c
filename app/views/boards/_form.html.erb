@@ -1,0 +1,11 @@
+<%= form_with model: board do |form| %>
+<div class="container p-3">
+  <div class="form-group w-50 p-1">
+    <%= form.label :name, t('.name_label'), class: "form-label" %><br />
+    <%= form.text_field :name, placeholder: t('.name_placeholder'), class: "form-control" %>
+    <%= form.label :description, t('.description_label'), class: "form-label" %><br />
+    <%= form.text_field :description, placeholder: t('.description_placeholder'), class: "form-control" %>
+  </div>
+  <%= form.submit t('.submit'), class: "btn btn-primary"%>
+</div>
+<% end %>

@@ -1,0 +1,199 @@
+
+ru:
+  ru: 'Русский'
+  en: 'Английский'
+
+# ACTIVE_RECORD
+  activerecord:
+      models:
+        user:
+          one: "Пользователь"
+          other: "Пользователи"
+        board:
+          one: "Доска"
+          other: "Доски"
+        card:
+          one: "Карточка"
+          other: "Карточки"
+      attributes:
+        card:
+          question: "Вопрос"
+          answer: "Ответ"
+        board:
+          name: "Наименование"
+          description: "Описание"
+      errors:
+        models:
+          card:
+            blank: "обязателен!"
+            attributes:
+              question:
+                too_long: "не должен превышать %{count} символов"
+              answer:
+          board:
+            blank: "обязательно!"
+            attributes:
+              name: 
+                too_short: "не дожно быть меньше %{count} символов"
+              description:
+                too_long: " не должно превышать %{count} символов"
+
+# GLOBAL
+  global:
+    confirm_deletion: "Вы уверены?"
+    button:
+      boards: "Доски"
+      back_to_boards: "Вернуться к доскам"
+      back_to_cards: "Вернуться к карточкам"
+    form:
+      email_label: "Электронная почта"
+      email_placeholder: "Введите вашу электронную почту"
+      password_label: "Пароль"
+      password_placeholder: "Введите ваш пароль"
+
+# DEVISE
+  devise:
+    shared:
+      links:
+        log_in: "Войти"
+        sign_up: "Регистрация"
+        forgot_password: "Забыли пароль?"
+    sessions:
+      new:
+        header: "Войти в аккаунт"
+        remember_me_label: "Запомнить"
+        submit: "Войти"
+    registrations:
+      new:
+        header: "Регистрация аккаунта"
+        user_name_label: "Имя"
+        user_name_placeholder: "Введите ваше имя"
+        password_label_em: "%{number} символов минимум"
+        password_confirmation: "Подтверждение пароля"
+        password_confirmation_placeholder: "Подтвердите ваш пароль"
+        submit: "Регистрация"
+      edit:
+        header: "Правка пользователя"
+        header2: "Удалить мой аккаунт"
+        header3: "Изменить мой пароль"
+        user_name_label: "Имя"
+        user_name_placeholder: "Введите имя"
+        description2: "Вы можете удалить ваш аккаунт в любое время. Просто нажмите кнопку ниже"
+        description3: "Измените ваш пароль, если хотите этого. Просто нажмите кнопку ниже"
+        delete_account: "Удалить аккаунт"
+        change_password: "Изменить пароль"
+        submit: "Обновить"
+    passwords:
+      new:
+        header: "Забыли свой пароль?"
+        description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля."
+        submit: "Выслать"    
+  
+# ERRORS PAGES
+  errors:
+    internal_error:
+      message: 'Внутренняя ошибка сервера'
+    not_found:
+      message: 'Страница не найдена'
+    unacceptable:
+      message: 'Необрабатываемый экземпляр'
+
+# SHARED  
+  shared:
+      navbar:
+        home: "Главная"
+        manual: "Мануал"
+        button:
+          edit_user: "Профиль"
+          sign_out: "Выйти"
+          sign_in: "Войти"
+          sign_up: "Регистрация"
+      how_it_works:
+        header: "Краткая инструкция по работе с приложением"
+        step1:  "Зарегистрируйтесь или войдите в ваш аккаунт"
+        step2: "Создайте ваши доски. Не забудьте добавить наименование и описание доски!"
+        step3: "Заполните доски своими информативными карточками. Выделяйте ваш код в ответах как в редакторах кода!"
+        step4: "Просматривайте карточки и повторяйте материал!"
+        step5: "Используйте функцию обучения для качественного усвоения материала!"
+        step6: "(Новые функции!)"
+      footer:
+        copyright: "Memory cards 2022. Все права защищены."
+  static_pages:
+      home:
+        welcome: "Добро пожаловать в Memory Cards!"
+        welcome2: "Это приложение поможет вам более эффективно изучать различные темы."
+        welcome3: "Приступим к обучению! Зарегистрируйтесь или войдите в существующую учетную запись"
+        welcome4: "Привет, %{username}! Проверьте свои доски! Нажмите на кнопку внизу!"
+      manual:
+        header: "Добро пожаловать в мануал!"
+
+# FLASH MESSAGES
+  flash:
+    users:
+      update:
+        success: 'Пароль обновлен'
+    boards:
+      no_access: "У вас нет доступа к этой доске"
+      create:
+        success: "Доска создана"
+      update:
+        success: "Доска обновлена"
+      destroy:
+        success: "Доска удалена"
+    cards:
+      no_access: "У вас нет доступа к данной доске/карточке"
+      create:
+        success: 'Карточка создана'
+      update:
+        success: 'Карточка обновлена'
+      destroy:
+        success: 'Карточка удалена'
+      learning:
+        add_cards: 'Добавьте карточек перед стартом обучения!'
+
+#USERS
+  users:
+    edit:
+      header: "Изменить пароль"
+      password_confirmation: "Подтверждение пароля"
+      password_confirmation_placeholder: "Подтвердите ваш пароль"
+      submit: "Обновить пароль"
+
+# BOARDS
+  boards:
+    index:
+      header: "Ваши доски"
+      learn_button: "Учить"
+      new_board_button: "Новая доска"
+    form:
+      name_label: "Наименование"
+      name_placeholder: "Введите наименование доски"
+      description_label: "Описание"
+      description_placeholder: "Введите описание доски"
+      submit: "Отправить"
+    new:
+      header: "Создать доску"
+    edit:
+      header: "Изменить доску"
+    show:
+      header: "Информация о доске"
+      name: "Наименование доски:"
+      description: "Описание доски:"
+   
+# CARDS      
+  cards:
+    index:
+      new_card: "Создать карточку"
+    form:
+      question_placeholder: "Введите вопрос"
+      answer_placeholder: "Введите ответ"
+      submit: "Отправить"
+    new:
+      header: "Создать карточку"
+    edit:
+      header: "Изменить карточку"
+    show:
+      card_header: "Вопрос"
+    learning:
+      header: "Изучение темы %{board_name}"
+      card_header: "Вопрос №%{number}"

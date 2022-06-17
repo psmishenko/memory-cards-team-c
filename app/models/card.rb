@@ -2,7 +2,7 @@
 
 class Card < ApplicationRecord
   belongs_to :board
-  validates :question, presence: { message: 'is required' },
-                       length: { maximum: 200, message: '%<count>s characters is the maximum allowed' }
-  validates :answer, presence: { message: 'is required' }
+  validates :question, presence: true,
+                       length: { maximum: 200 }
+  validates :answer, presence: true
 end

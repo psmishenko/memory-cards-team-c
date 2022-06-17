@@ -26,7 +26,7 @@ RSpec.describe 'Registrations', type: :request do
       before { get '/user/edit' }
 
       it { expect(response).to have_http_status(:ok) }
-      it { expect(response.body).to include('Edit password') }
+      it { expect(response.body).to include('Change my password') }
     end
 
     describe 'PATCH /update' do

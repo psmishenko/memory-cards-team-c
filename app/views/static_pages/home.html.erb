@@ -2,17 +2,17 @@
   <div class="col-lg-7">
     <!-- Mashead text and app badges-->
     <div class="mb-5 mb-lg-0 text-center text-lg-start">
-      <h1 class="display-1 lh-1 mb-3">Welcome to Memory cards app!</h1>
-      <p class="lead fw-normal text-muted mb-3">This application will help you to study various topics more effectively.</p>
+      <h1 class="display-1 lh-1 mb-3"><%= t('.welcome') %></h1>
+      <p class="lead fw-normal text-muted mb-3"><%= t('.welcome2') %></p>
       <% if current_user %>
-      <p class="lead fw-normal text-muted mb-3">Hello, <%= current_user.name.present? ? current_user.name : current_user.email %>! Check your boards! Click on the button below!</p>
+      <p class="lead fw-normal text-muted mb-3"><%= t('.welcome4', username: current_user.name.present? ? current_user.name : current_user.email) %></p>
       <%= button_to boards_path, method: 'get', class: "btn btn-success btn-lg" do%>
-      <span class="bi bi-bookmark-heart">Boards</span>
+      <span class="bi bi-bookmark-heart"><%= t('global.button.boards') %></span>
       <% end %>
       <% else %>
-      <p class="lead fw-normal text-muted mb-3">Let's start learning! Register or login to an existing account</p>
-      <%= link_to "Sign In", new_user_session_path, class:"btn btn-primary btn-lg" %>
-      <%= link_to "Sign up", new_user_registration_path, class:"btn btn-primary btn-lg" %>
+      <p class="lead fw-normal text-muted mb-3"><%= t('.welcome3') %></p>
+      <%= link_to t('shared.navbar.button.sign_in'), new_user_session_path, class:"btn btn-primary btn-lg" %>
+      <%= link_to t('shared.navbar.button.sign_up'), new_user_registration_path, class:"btn btn-primary btn-lg" %>
       <% end %>
       <div class="d-flex flex-column flex-lg-row align-items-center">
       </div>
