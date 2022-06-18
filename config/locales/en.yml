@@ -62,6 +62,7 @@ en:
           header: "Log in"
           remember_me_label: "Remember me"
           submit: "Log in"
+          sign_in_github: 'Sign in with Github'
       registrations:
         new:
           header: "Sign up"
@@ -71,6 +72,7 @@ en:
           password_confirmation: "Password confirmation"
           password_confirmation_placeholder: "Confirm your password"
           submit: "Sign up"
+          sign_up_github: "Sign up with Github"
         edit:
           header: "Edit User"
           header2: "Delete my account"

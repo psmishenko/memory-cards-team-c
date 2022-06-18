@@ -51,7 +51,11 @@ describe 'Users::OmniauthCallbacks', type: :request do
       end
 
       it { expect(response).to render_template(:new) }
-      it { expect(response.body).to include('Could not authenticate you from Github because') }
+
+      it {
+        expect(response.body)
+          .to include('Could not authenticate you from Github because &quot;Email can&#39;t be blank&quot;.')
+      }
     end
 
     context 'when invalid credentials' do
@@ -64,8 +68,12 @@ describe 'Users::OmniauthCallbacks', type: :request do
         follow_redirect!
       end
 
-      it { expect(response).to render_template(:home) }
-      it { expect(response.body).to include('Failure. Please try again') }
+      it { expect(response).to render_template(:new) }
+
+      it {
+        expect(response.body)
+          .to include('Could not authenticate you from GitHub because &quot;Invalid credentials&quot;.')
+      }
     end
   end
 end

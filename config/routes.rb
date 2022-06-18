@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :users, only: :omniauth_callbacks, controllers: {omniauth_callbacks: 'users/omniauth_callbacks'}
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     devise_for :admin_users, ActiveAdmin::Devise.config
     ActiveAdmin.routes(self)
-    devise_for :users, controllers: { registrations: "registrations", omniauth_callbacks: "users/omniauth_callbacks" }
+    devise_for :users, controllers: { registrations: "registrations"}, skip: :omniauth_callbacks
     resource :user, only: [:edit, :update]
     root 'static_pages#home'
     get '/manual', to: 'static_pages#manual'

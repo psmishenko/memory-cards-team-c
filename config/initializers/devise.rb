@@ -271,6 +271,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
+  OmniAuth.config.logger = Rails.logger
   config.omniauth :github, Rails.application.credentials.dig(:github, :client_id), 
                   Rails.application.credentials.dig(:github, :client_secrets), scope: 'user'
 

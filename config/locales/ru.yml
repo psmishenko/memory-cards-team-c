@@ -63,6 +63,7 @@ ru:
         header: "Войти в аккаунт"
         remember_me_label: "Запомнить"
         submit: "Войти"
+        sign_in_github: "Войти с помощью Github"
     registrations:
       new:
         header: "Регистрация аккаунта"
@@ -72,6 +73,7 @@ ru:
         password_confirmation: "Подтверждение пароля"
         password_confirmation_placeholder: "Подтвердите ваш пароль"
         submit: "Регистрация"
+        sign_up_github: 'Регистрация через Github'
       edit:
         header: "Правка пользователя"
         header2: "Удалить мой аккаунт"
