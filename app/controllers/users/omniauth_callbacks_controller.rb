@@ -14,8 +14,10 @@ module Users
         flash[:notice] = I18n.t 'devise.omniauth_callbacks.success', kind: kind
         sign_in_and_redirect @user, event: :authentication
       else
-        session['devise.auth_data'] = request.env['omniauth.auth'].except(:extra)
-        redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+        session['devise.github_data'] = request.env['omniauth.auth']
+        flash[:alert] =
+          I18n.t 'devise.omniauth_callbacks.failure', kind: kind, reason: @user.errors.full_messages.join("\n")
+        redirect_to new_user_registration_url
       end
     end
     # rubocop:enable Metrics/AbcSize
