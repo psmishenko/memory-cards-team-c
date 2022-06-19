@@ -3,7 +3,7 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_board
-  before_action :find_card, except: %i[index new create learning]
+  before_action :find_card, except: %i[index new create learning set_confidence_level]
 
   def index
     @cards = @board.cards.order(created_at: :desc)
@@ -47,6 +47,12 @@ class CardsController < ApplicationController
     else
       render 'learning'
     end
+  end
+
+  def set_confidence_level
+    @card = @board.cards.find(params[:card_id])
+    @card.update(confidence_level: params[:confidence_level])
+    redirect_to request.referer
   end
 
   private

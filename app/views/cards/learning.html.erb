@@ -15,13 +15,22 @@
 		<div class="carousel-item">
 			<div class="card border-dark w-75 mx-auto">
 				<div class="card-header bg-dark text-white text-center">
-					<%= t('.card_header', number: @cards.index(card)+1) %>
+					<div><%= t('.card_header', number: @cards.index(card)+1) %></div>
+					<span class="badge bg-<%= {0 => "info", 1 => "danger", 2 => "danger", 3 => "warning", 4 => "success", 5 => "success"}[Card.confidence_levels[card.confidence_level]]%>"><%= t("cards.confidence_level.label", level: t("confidence_level.#{card.confidence_level}")) %></span>
 				</div>
 				<div class="card-body" data-bs-toggle="collapse" data-bs-target="#collapseAnswer" aria-expanded="true" aria-controls="collapseAnswer">
 					<h5 class="card-title text-center"><%= card.question %></h5>
 					<div class="collapse" id="collapseAnswer">
 						<div class="card card-answer border-dark">
 							<%= md_format(card.answer).html_safe %>
+						</div>
+						<div class="text-center pt-4">
+							<span><%= t("cards.confidence_level.mark_level") %></span><br>
+							<div class="btn-group btn-group-sm" role="group">
+								<% Card.confidence_levels.except(:undefined).each do |level| %>
+								<%= link_to level.last, board_card_set_confidence_level_path(@board,card, confidence_level: level.first), method: :patch, class: "btn btn-#{ { 1 => "danger", 2 => "danger", 3 => "warning", 4 => "success", 5 => "success"}[level.last] } "%>
+								<% end %>
+							</div>
 						</div>
 					</div>
 				</div>

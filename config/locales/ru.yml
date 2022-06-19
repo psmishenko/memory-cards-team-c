@@ -38,6 +38,14 @@ ru:
               description:
                 too_long: " не должно превышать %{count} символов"
 
+  confidence_level:
+    undefined: "Не определен"
+    very_bad: "Очень плохо"
+    bad: "Плохо"
+    medium: "Средне"
+    good: "Хорошо"
+    perfect: "Идеально"
+
 # GLOBAL
   global:
     confirm_deletion: "Вы уверены?"
@@ -184,6 +192,9 @@ ru:
    
 # CARDS      
   cards:
+    confidence_level:
+      label: "Уровень уверенности: %{level}"
+      mark_level: "Насколько хорошо вы знаете эту тему?"
     index:
       new_card: "Создать карточку"
     form:
