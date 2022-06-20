@@ -39,12 +39,12 @@ ru:
                 too_long: " не должно превышать %{count} символов"
 
   confidence_level:
-    undefined: "Не определен"
-    very_bad: "Очень плохо"
-    bad: "Плохо"
-    medium: "Средне"
-    good: "Хорошо"
-    perfect: "Идеально"
+    undefined: "Неопределенный"
+    very_bad: "Очень плохой"
+    bad: "Плохой"
+    medium: "Средний"
+    good: "Хороший"
+    perfect: "Идеальный"
 
 # GLOBAL
   global:
@@ -194,7 +194,7 @@ ru:
   cards:
     confidence_level:
       label: "Уровень уверенности: %{level}"
-      mark_level: "Насколько хорошо вы знаете эту тему?"
+      mark_level: "Насколько хорошо вы знаете этот вопрос?"
     index:
       new_card: "Создать карточку"
     form:
