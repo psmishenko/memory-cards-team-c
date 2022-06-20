@@ -37,6 +37,14 @@ en:
             description:
               too_long: "is too long (maximum is %<count>s characters)"
 
+  confidence_level:
+    undefined: "Undefined" 
+    very_bad: "Very bad"
+    bad: "Bad"
+    medium: "Medium"
+    good: "Good"
+    perfect: "Perfect"
+
 # GLOBAL
   global:
     confirm_deletion: "Are you sure?"
@@ -185,6 +193,9 @@ en:
 
 # CARDS
   cards:
+    confidence_level:
+      label: "Level of confidence: %{level}"
+      mark_level: "How well did I know it?"
     index:
       new_card: "New card"
     form:

@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     root 'static_pages#home'
     get '/manual', to: 'static_pages#manual'
     resources :boards do
-      resources :cards
+      resources :cards do
+        patch :set_confidence_level
+      end
       get '/learning', to: 'cards#learning'
     end
     get '/404', to: "errors#not_found"

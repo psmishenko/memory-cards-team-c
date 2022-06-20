@@ -55,6 +55,13 @@ RSpec.describe 'Cards', type: :request do
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
 
+    describe 'PATCH /set_confidence_level' do
+      before { patch "/boards/#{board.id}/cards/#{card.id}/set_confidence_level", params: correct_params }
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
+
     describe 'DELETE /destroy' do
       let!(:card1) { create(:card, board_id: board.id) }
 
@@ -193,6 +200,14 @@ RSpec.describe 'Cards', type: :request do
         it { expect(response).to render_template(:new) }
         it { expect(flash[:error]).to include('Question 200 characters is the maximum allowed') }
       end
+    end
+
+    describe 'PATCH /set_confidence_level' do
+      let(:params_with_level) { { confidence_level: :bad } }
+
+      before { patch "/boards/#{board.id}/cards/#{card.id}/set_confidence_level", headers: { 'HTTP_REFERER' => "http://example.com/en/boards/#{board.id}/cards/#{card.id}" }, params: params_with_level }
+
+      it { expect(card.reload).to have_attributes(confidence_level: 'bad') }
     end
 
     describe 'PATCH /update' do
