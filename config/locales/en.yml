@@ -1,241 +1,220 @@
-
+---
 en:
-  ru: 'Russian'
-  en: 'English'
-
-# ACTIVE_RECORD
   activerecord:
-    models:
-      user:
-        one: "User"
-        other: "Users"
-      board:
-        one: "Board"
-        other: "Boards"
-      card:
-        one: "Card"
-        other: "Cards"
     attributes:
-      card:
-        question: "Question"
-        answer: "Answer"
       board:
-        name: "Name"
-        description: "Description"
+        description: Description
+        name: Name
+      card:
+        answer: Answer
+        question: Question
     errors:
       models:
+        board:
+          attributes:
+            description:
+              too_long: is too long (maximum is %<count>s characters)
+            name:
+              too_short: is too short (minimum is %<count>s characters)
+          blank: is required!
         card:
-          blank: "is required!"
           attributes:
             question:
-              too_long: "%<count>s characters is the maximum allowed"
-        board:
-          blank: "is required!"
-          attributes:
-            name:
-              too_short: "is too short (minimum is %<count>s characters)"
-            description:
-              too_long: "is too long (maximum is %<count>s characters)"
-
-  confidence_level:
-    undefined: "Undefined" 
-    very_bad: "Very bad"
-    bad: "Bad"
-    medium: "Medium"
-    good: "Good"
-    perfect: "Perfect"
-
-# GLOBAL
-  global:
-    confirm_deletion: "Are you sure?"
-    button:      
-      boards: "Boards"
-      back_to_boards: "Back to boards"
-      back_to_cards: "Back to all cards"
-      back_to_imports: "Back to all imports"
-    form:
-      email_label: "Email"
-      email_placeholder: "Insert your email"
-      password_label: "Password"
-      password_placeholder: "Insert your password"
-  
-# DEVISE      
-  devise:
-      shared:
-        links:
-          log_in: "Log in"
-          sign_up: "Sign up"
-          forgot_password: "Forgot your password?"
-      sessions:
-        new:
-          header: "Log in"
-          remember_me_label: "Remember me"
-          submit: "Log in"
-          sign_in_github: 'Sign in with Github'
-      registrations:
-        new:
-          header: "Sign up"
-          user_name_label: "Name"
-          user_name_placeholder: "Insert your name"
-          password_label_em: "%{number} characters minimum"
-          password_confirmation: "Password confirmation"
-          password_confirmation_placeholder: "Confirm your password"
-          submit: "Sign up"
-          sign_up_github: "Sign up with Github"
-        edit:
-          header: "Edit User"
-          header2: "Delete my account"
-          header3: "Change my password"
-          user_name_label: "Name"
-          user_name_placeholder: "Insert your name"
-          description2: "You can delete your account at any time. Just press button below"
-          description3: "Сhange your password if you want. Just press button below"
-          delete_account: "Delete account"
-          change_password: "Change password"
-          submit: "Update"
-      passwords:
-        new:
-          header: "Forgot your password?"
-          description: "Enter your email and we will send you instructions to generate a new password."
-          submit: "Send"  
-
-# ERRORS PAGES
-  errors:
-    internal_error:
-      message: 'Internal Server Error'
-    not_found:
-      message: 'Page Not Found'
-    unacceptable:
-      message: 'Unprocessable Entity'
-
-# SHARED      
-  shared:
-      navbar:
-        home: "Home"
-        manual: "Manual"
-        import: "Import"
-        button:
-          edit_user: "Edit user"
-          sign_out: "Sign out"
-          sign_in: "Sign in"
-          sign_up: "Sign up"
-      how_it_works:
-        header: "Short instructions for interacting with the app"
-        step1: "Sign in or sign up"
-        step2: "Сreate your boards. Don't forget to add board name and description!"
-        step3: "Fill your boards with informative cards. You can highlight your code in answers like code editors!"
-        step4: "Watch your cards and repeat stuff!"
-        step5: "You can also use board learning feature for quality training."
-        step6: "(New feature!)"
-      footer:
-        copyright: "Memory cards 2022. All Rights Reserved."
-  static_pages:
-      home:
-        welcome: "Welcome to Memory cards app!"
-        welcome2: "This application will help you to study various topics more effectively."
-        welcome3: "Let's start learning! Register or login to an existing account"
-        welcome4: "Hello, %{username}! Check your boards! Click on the button below!"
-      manual:
-        header: "Welcome to manual!"
-
-# FLASH MESSAGES
-  flash:
-    users:
-      update:
-        success: 'Password updated'
-    boards:
-      no_access: "You don't have access to this board"
-      create:
-        success: 'Board created'
-      update:
-        success: 'Board updated'
-      destroy:
-        success: 'Board deleted'
-    cards:
-      no_access: "You don't have access to this board/card"
-      create:
-        success: 'Card created'
-      update:
-        success: 'Card updated'
-      destroy:
-        success: 'Card deleted'
-      learning:
-        add_cards: 'Add cards before starting learning!'
-    imports:
-      no_access: "You don't have access to this file"
-      create:
-        success: 'File uploaded'
-      update:
-        success: 'File updated'
-      destroy:
-        success: 'File deleted'
-
-#USERS
-  users:
-    edit:
-      header: "Change my password"
-      password_confirmation: "Password confirmation"
-      password_confirmation_placeholder: "Confirm your password"
-      submit: "Update"
-
-# BOARDS
+              too_long: '%<count>s characters is the maximum allowed'
+          blank: is required!
+    models:
+      board:
+        one: Board
+        other: Boards
+      card:
+        one: Card
+        other: Cards
+      user:
+        one: User
+        other: Users
   boards:
-    index:
-      header: "Your boards"
-      learn_button: "Learn"
-      new_board_button: "New board"
-    form:
-      name_label: "Name"
-      name_placeholder: "Insert board name"
-      description_label: "Description"
-      description_placeholder: "Insert board description"
-      submit: "Submit"
-    new:
-      header: "Create board"
     edit:
-      header: "Edit board"
+      header: Edit board
+    form:
+      description_label: Description
+      description_placeholder: Insert board description
+      name_label: Name
+      name_placeholder: Insert board name
+      submit: Submit
+    index:
+      header: Your boards
+      learn_button: Learn
+      new_board_button: New board
+    new:
+      header: Create board
     show:
-      header: "Board information"
-      name: "Board name:"
-      description: "Board description:"
-
-# CARDS
+      description: 'Board description:'
+      header: Board information
+      name: 'Board name:'
   cards:
     confidence_level:
-      label: "Level of confidence: %{level}"
-      mark_level: "How well did I know it?"
-    index:
-      new_card: "New card"
-    form:
-      question_placeholder: "Insert a question"
-      answer_placeholder: "Insert an answer"
-      submit: "Submit"
-    new:
-      header: "New card"
+      label: 'Level of confidence: %{level}'
+      mark_level: How well did I know it?
     edit:
-      header: "Edit card"
-    show:
-      card_header: "Question"
+      header: Edit card
+    form:
+      answer_placeholder: Insert an answer
+      question_placeholder: Insert a question
+      submit: Submit
+    index:
+      new_card: New card
     learning:
-      header: "%{board_name} learning"
-      card_header: "Question №%{number}"
-
-# IMPORTS
-  imports:
-    index:
-      header: "Your Uploads"
-      new_board_button: "Upload new file"
-      name: "Name"
-      edit: "Edit"
-      download: "Download"
-      delete: "Delete"
-    form:
-      name_label: "File"
-      submit: "Upload"
+      card_header: Question №%{number}
+      header: '%{board_name} learning'
     new:
-      header: "Upload file"
-    edit:
-      header: "Edit uploaded file"
+      header: New card
     show:
-      header: "Information about the uploaded file:"
-      name: "Uploaded file:"
+      card_header: Question
+  confidence_level:
+    bad: Bad
+    good: Good
+    medium: Medium
+    perfect: Perfect
+    undefined: Undefined
+    very_bad: Very bad
+  devise:
+    passwords:
+      new:
+        description: Enter your email and we will send you instructions to generate a new password.
+        header: Forgot your password?
+        submit: Send
+    registrations:
+      edit:
+        change_password: Change password
+        delete_account: Delete account
+        description2: You can delete your account at any time. Just press button below
+        description3: Change your password if you want. Just press button below
+        header: Edit User
+        header2: Delete my account
+        header3: Change my password
+        submit: Update
+        user_name_label: Name
+        user_name_placeholder: Insert your name
+      new:
+        header: Sign up
+        password_confirmation: Password confirmation
+        password_confirmation_placeholder: Confirm your password
+        password_label_em: '%{number} characters minimum'
+        sign_up_github: Sign up with Github
+        submit: Sign up
+        user_name_label: Name
+        user_name_placeholder: Insert your name
+    sessions:
+      new:
+        header: Log in
+        remember_me_label: Remember me
+        sign_in_github: Sign in with Github
+        submit: Log in
+    shared:
+      links:
+        forgot_password: Forgot your password?
+        log_in: Log in
+        sign_up: Sign up
+  en: English
+  errors:
+    internal_error:
+      message: Internal Server Error
+    not_found:
+      message: Page Not Found
+    unacceptable:
+      message: Unprocessable Entity
+  flash:
+    boards:
+      create:
+        success: Board created
+      destroy:
+        success: Board deleted
+      no_access: You don't have access to this board
+      update:
+        success: Board updated
+    cards:
+      create:
+        success: Card created
+      destroy:
+        success: Card deleted
+      learning:
+        add_cards: Add cards before starting learning!
+      no_access: You don't have access to this board/card
+      update:
+        success: Card updated
+    imports:
+      create:
+        success: File uploaded
+      destroy:
+        success: File deleted
+      no_access: You don't have access to this file
+      update:
+        success: File updated
+    users:
+      update:
+        success: Password updated
+  global:
+    button:
+      back_to_boards: Back to boards
+      back_to_cards: Back to all cards
+      back_to_imports: Back to all imports
+      boards: Boards
+    confirm_deletion: Are you sure?
+    form:
+      email_label: Email
+      email_placeholder: Insert your email
+      password_label: Password
+      password_placeholder: Insert your password
+  imports:
+    edit:
+      header: Edit uploaded file
+    form:
+      name_label: File
+      submit: Upload
+    index:
+      delete: Delete
+      download: Download
+      edit: Edit
+      header: Your Uploads
+      name: Name
+      new_board_button: Upload new file
+    new:
+      header: Upload file
+    show:
+      header: 'Information about the uploaded file:'
+      name: 'Uploaded file:'
+  ru: Russian
+  shared:
+    footer:
+      copyright: Memory cards 2022. All Rights Reserved.
+    how_it_works:
+      header: Short instructions for interacting with the app
+      step1: Sign in or sign up
+      step2: Create your boards. Don't forget to add board name and description!
+      step3: Fill your boards with informative cards. You can highlight your code in answers like code editors!
+      step4: Watch your cards and repeat stuff!
+      step5: You can also use board learning feature for quality training.
+      step6: (New feature!)
+    navbar:
+      button:
+        edit_user: Edit user
+        sign_in: Sign in
+        sign_out: Sign out
+        sign_up: Sign up
+      home: Home
+      import: Import
+      manual: Manual
+  static_pages:
+    home:
+      welcome: Welcome to Memory cards app!
+      welcome2: This application will help you to study various topics more effectively.
+      welcome3: Let's start learning! Register or login to an existing account
+      welcome4: Hello, %{username}! Check your boards! Click on the button below!
+    manual:
+      header: Welcome to manual!
+  users:
+    edit:
+      header: Change my password
+      password_confirmation: Password confirmation
+      password_confirmation_placeholder: Confirm your password
+      submit: Update

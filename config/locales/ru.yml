@@ -1,242 +1,221 @@
-
+---
 ru:
-  ru: 'Русский'
-  en: 'Английский'
-
-# ACTIVE_RECORD
   activerecord:
+    attributes:
+      board:
+        description: Описание
+        name: Наименование
+      card:
+        answer: Ответ
+        question: Вопрос
+    errors:
       models:
-        user:
-          one: "Пользователь"
-          other: "Пользователи"
         board:
-          one: "Доска"
-          other: "Доски"
+          attributes:
+            description:
+              too_long: ' не должно превышать %{count} символов'
+            name:
+              too_short: не дожно быть меньше %{count} символов
+          blank: обязательно!
         card:
-          one: "Карточка"
-          other: "Карточки"
-      attributes:
-        card:
-          question: "Вопрос"
-          answer: "Ответ"
-        board:
-          name: "Наименование"
-          description: "Описание"
-      errors:
-        models:
-          card:
-            blank: "обязателен!"
-            attributes:
-              question:
-                too_long: "не должен превышать %{count} символов"
-              answer:
-          board:
-            blank: "обязательно!"
-            attributes:
-              name: 
-                too_short: "не дожно быть меньше %{count} символов"
-              description:
-                too_long: " не должно превышать %{count} символов"
-
-  confidence_level:
-    undefined: "Неопределенный"
-    very_bad: "Очень плохой"
-    bad: "Плохой"
-    medium: "Средний"
-    good: "Хороший"
-    perfect: "Идеальный"
-
-# GLOBAL
-  global:
-    confirm_deletion: "Вы уверены?"
-    button:
-      boards: "Доски"
-      back_to_boards: "Вернуться к доскам"
-      back_to_cards: "Вернуться к карточкам"
-      back_to_imports: "Вернуться к импортам"
-    form:
-      email_label: "Электронная почта"
-      email_placeholder: "Введите вашу электронную почту"
-      password_label: "Пароль"
-      password_placeholder: "Введите ваш пароль"
-
-# DEVISE
-  devise:
-    shared:
-      links:
-        log_in: "Войти"
-        sign_up: "Регистрация"
-        forgot_password: "Забыли пароль?"
-    sessions:
-      new:
-        header: "Войти в аккаунт"
-        remember_me_label: "Запомнить"
-        submit: "Войти"
-        sign_in_github: "Войти с помощью Github"
-    registrations:
-      new:
-        header: "Регистрация аккаунта"
-        user_name_label: "Имя"
-        user_name_placeholder: "Введите ваше имя"
-        password_label_em: "%{number} символов минимум"
-        password_confirmation: "Подтверждение пароля"
-        password_confirmation_placeholder: "Подтвердите ваш пароль"
-        submit: "Регистрация"
-        sign_up_github: 'Регистрация через Github'
-      edit:
-        header: "Правка пользователя"
-        header2: "Удалить мой аккаунт"
-        header3: "Изменить мой пароль"
-        user_name_label: "Имя"
-        user_name_placeholder: "Введите имя"
-        description2: "Вы можете удалить ваш аккаунт в любое время. Просто нажмите кнопку ниже"
-        description3: "Измените ваш пароль, если хотите этого. Просто нажмите кнопку ниже"
-        delete_account: "Удалить аккаунт"
-        change_password: "Изменить пароль"
-        submit: "Обновить"
-    passwords:
-      new:
-        header: "Забыли свой пароль?"
-        description: "Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля."
-        submit: "Выслать"    
-  
-# ERRORS PAGES
-  errors:
-    internal_error:
-      message: 'Внутренняя ошибка сервера'
-    not_found:
-      message: 'Страница не найдена'
-    unacceptable:
-      message: 'Необрабатываемый экземпляр'
-
-# SHARED  
-  shared:
-      navbar:
-        home: "Главная"
-        manual: "Мануал"
-        import: "Импорт"
-        button:
-          edit_user: "Профиль"
-          sign_out: "Выйти"
-          sign_in: "Войти"
-          sign_up: "Регистрация"
-      how_it_works:
-        header: "Краткая инструкция по работе с приложением"
-        step1:  "Зарегистрируйтесь или войдите в ваш аккаунт"
-        step2: "Создайте ваши доски. Не забудьте добавить наименование и описание доски!"
-        step3: "Заполните доски своими информативными карточками. Выделяйте ваш код в ответах как в редакторах кода!"
-        step4: "Просматривайте карточки и повторяйте материал!"
-        step5: "Используйте функцию обучения для качественного усвоения материала!"
-        step6: "(Новые функции!)"
-      footer:
-        copyright: "Memory cards 2022. Все права защищены."
-  static_pages:
-      home:
-        welcome: "Добро пожаловать в Memory Cards!"
-        welcome2: "Это приложение поможет вам более эффективно изучать различные темы."
-        welcome3: "Приступим к обучению! Зарегистрируйтесь или войдите в существующую учетную запись"
-        welcome4: "Привет, %{username}! Проверьте свои доски! Нажмите на кнопку внизу!"
-      manual:
-        header: "Добро пожаловать в мануал!"
-
-# FLASH MESSAGES
-  flash:
-    users:
-      update:
-        success: 'Пароль обновлен'
-    boards:
-      no_access: "У вас нет доступа к этой доске"
-      create:
-        success: "Доска создана"
-      update:
-        success: "Доска обновлена"
-      destroy:
-        success: "Доска удалена"
-    cards:
-      no_access: "У вас нет доступа к данной доске/карточке"
-      create:
-        success: 'Карточка создана'
-      update:
-        success: 'Карточка обновлена'
-      destroy:
-        success: 'Карточка удалена'
-      learning:
-        add_cards: 'Добавьте карточек перед стартом обучения!'
-    imports:
-      no_access: "У вас нет доступа к данному файлу"
-      create:
-        success: 'Файл загружен'
-      update:
-        success: 'Файл обновлен'
-      destroy:
-        success: 'Файл удален'
-
-#USERS
-  users:
-    edit:
-      header: "Изменить пароль"
-      password_confirmation: "Подтверждение пароля"
-      password_confirmation_placeholder: "Подтвердите ваш пароль"
-      submit: "Обновить пароль"
-
-# BOARDS
+          attributes:
+            answer: null
+            question:
+              too_long: не должен превышать %{count} символов
+          blank: обязателен!
+    models:
+      board:
+        one: Доска
+        other: Доски
+      card:
+        one: Карточка
+        other: Карточки
+      user:
+        one: Пользователь
+        other: Пользователи
   boards:
-    index:
-      header: "Ваши доски"
-      learn_button: "Учить"
-      new_board_button: "Новая доска"
-    form:
-      name_label: "Наименование"
-      name_placeholder: "Введите наименование доски"
-      description_label: "Описание"
-      description_placeholder: "Введите описание доски"
-      submit: "Отправить"
-    new:
-      header: "Создать доску"
     edit:
-      header: "Изменить доску"
+      header: Изменить доску
+    form:
+      description_label: Описание
+      description_placeholder: Введите описание доски
+      name_label: Наименование
+      name_placeholder: Введите наименование доски
+      submit: Отправить
+    index:
+      header: Ваши доски
+      learn_button: Учить
+      new_board_button: Новая доска
+    new:
+      header: Создать доску
     show:
-      header: "Информация о доске"
-      name: "Наименование доски:"
-      description: "Описание доски:"
-   
-# CARDS      
+      description: 'Описание доски:'
+      header: Информация о доске
+      name: 'Наименование доски:'
   cards:
     confidence_level:
-      label: "Уровень уверенности: %{level}"
-      mark_level: "Насколько хорошо вы знаете этот вопрос?"
-    index:
-      new_card: "Создать карточку"
-    form:
-      question_placeholder: "Введите вопрос"
-      answer_placeholder: "Введите ответ"
-      submit: "Отправить"
-    new:
-      header: "Создать карточку"
+      label: 'Уровень уверенности: %{level}'
+      mark_level: Насколько хорошо вы знаете этот вопрос?
     edit:
-      header: "Изменить карточку"
-    show:
-      card_header: "Вопрос"
+      header: Изменить карточку
+    form:
+      answer_placeholder: Введите ответ
+      question_placeholder: Введите вопрос
+      submit: Отправить
+    index:
+      new_card: Создать карточку
     learning:
-      header: "Изучение темы %{board_name}"
-      card_header: "Вопрос №%{number}"
-
-# IMPORTS
-  imports:
-    index:
-      header: "Ваши загрузки"
-      new_board_button: "Загрузить новый файл"
-      name: "Название"
-      edit: "Изменить"
-      download: "Скачать"
-      delete: "Удалить"
-    form:
-      name_label: "Файл"
-      submit: "Загрузить"
+      card_header: Вопрос №%{number}
+      header: Изучение темы %{board_name}
     new:
-      header: "Загрузить файл"
-    edit:
-      header: "Изменить загруженый файл"
+      header: Создать карточку
     show:
-      header: "Информация о загруженном файле:"
-      name: "Загруженный файл:"
+      card_header: Вопрос
+  confidence_level:
+    bad: Плохой
+    good: Хороший
+    medium: Средний
+    perfect: Идеальный
+    undefined: Неопределенный
+    very_bad: Очень плохой
+  devise:
+    passwords:
+      new:
+        description: Введите вашу электронную почту и мы вышлем вам инструкции по генерации нового пароля.
+        header: Забыли свой пароль?
+        submit: Выслать
+    registrations:
+      edit:
+        change_password: Изменить пароль
+        delete_account: Удалить аккаунт
+        description2: Вы можете удалить ваш аккаунт в любое время. Просто нажмите кнопку ниже
+        description3: Измените ваш пароль, если хотите этого. Просто нажмите кнопку ниже
+        header: Правка пользователя
+        header2: Удалить мой аккаунт
+        header3: Изменить мой пароль
+        submit: Обновить
+        user_name_label: Имя
+        user_name_placeholder: Введите имя
+      new:
+        header: Регистрация аккаунта
+        password_confirmation: Подтверждение пароля
+        password_confirmation_placeholder: Подтвердите ваш пароль
+        password_label_em: '%{number} символов минимум'
+        sign_up_github: Регистрация через Github
+        submit: Регистрация
+        user_name_label: Имя
+        user_name_placeholder: Введите ваше имя
+    sessions:
+      new:
+        header: Войти в аккаунт
+        remember_me_label: Запомнить
+        sign_in_github: Войти с помощью Github
+        submit: Войти
+    shared:
+      links:
+        forgot_password: Забыли пароль?
+        log_in: Войти
+        sign_up: Регистрация
+  en: Английский
+  errors:
+    internal_error:
+      message: Внутренняя ошибка сервера
+    not_found:
+      message: Страница не найдена
+    unacceptable:
+      message: Необрабатываемый экземпляр
+  flash:
+    boards:
+      create:
+        success: Доска создана
+      destroy:
+        success: Доска удалена
+      no_access: У вас нет доступа к этой доске
+      update:
+        success: Доска обновлена
+    cards:
+      create:
+        success: Карточка создана
+      destroy:
+        success: Карточка удалена
+      learning:
+        add_cards: Добавьте карточек перед стартом обучения!
+      no_access: У вас нет доступа к данной доске/карточке
+      update:
+        success: Карточка обновлена
+    imports:
+      create:
+        success: Файл загружен
+      destroy:
+        success: Файл удален
+      no_access: У вас нет доступа к данному файлу
+      update:
+        success: Файл обновлен
+    users:
+      update:
+        success: Пароль обновлен
+  global:
+    button:
+      back_to_boards: Вернуться к доскам
+      back_to_cards: Вернуться к карточкам
+      back_to_imports: Вернуться к импортам
+      boards: Доски
+    confirm_deletion: Вы уверены?
+    form:
+      email_label: Электронная почта
+      email_placeholder: Введите вашу электронную почту
+      password_label: Пароль
+      password_placeholder: Введите ваш пароль
+  imports:
+    edit:
+      header: Изменить загруженый файл
+    form:
+      name_label: Файл
+      submit: Загрузить
+    index:
+      delete: Удалить
+      download: Скачать
+      edit: Изменить
+      header: Ваши загрузки
+      name: Название
+      new_board_button: Загрузить новый файл
+    new:
+      header: Загрузить файл
+    show:
+      header: 'Информация о загруженном файле:'
+      name: 'Загруженный файл:'
+  ru: Русский
+  shared:
+    footer:
+      copyright: Memory cards 2022. Все права защищены.
+    how_it_works:
+      header: Краткая инструкция по работе с приложением
+      step1: Зарегистрируйтесь или войдите в ваш аккаунт
+      step2: Создайте ваши доски. Не забудьте добавить наименование и описание доски!
+      step3: Заполните доски своими информативными карточками. Выделяйте ваш код в ответах как в редакторах кода!
+      step4: Просматривайте карточки и повторяйте материал!
+      step5: Используйте функцию обучения для качественного усвоения материала!
+      step6: (Новые функции!)
+    navbar:
+      button:
+        edit_user: Профиль
+        sign_in: Войти
+        sign_out: Выйти
+        sign_up: Регистрация
+      home: Главная
+      import: Импорт
+      manual: Мануал
+  static_pages:
+    home:
+      welcome: Добро пожаловать в Memory Cards!
+      welcome2: Это приложение поможет вам более эффективно изучать различные темы.
+      welcome3: Приступим к обучению! Зарегистрируйтесь или войдите в существующую учетную запись
+      welcome4: Привет, %{username}! Проверьте свои доски! Нажмите на кнопку внизу!
+    manual:
+      header: Добро пожаловать в мануал!
+  users:
+    edit:
+      header: Изменить пароль
+      password_confirmation: Подтверждение пароля
+      password_confirmation_placeholder: Подтвердите ваш пароль
+      submit: Обновить пароль
