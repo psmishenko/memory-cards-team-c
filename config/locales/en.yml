@@ -52,7 +52,7 @@ en:
       boards: "Boards"
       back_to_boards: "Back to boards"
       back_to_cards: "Back to all cards"
-      back_to_imports: "Backto all imports"
+      back_to_imports: "Back to all imports"
     form:
       email_label: "Email"
       email_placeholder: "Insert your email"
