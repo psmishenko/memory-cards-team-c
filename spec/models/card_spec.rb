@@ -16,5 +16,10 @@ RSpec.describe Card, type: :model do
     it {
       expect(card).to validate_length_of(:question).is_at_most(200)
     }
+
+    it {
+      expect(card).to define_enum_for(:confidence_level)
+        .with_values(%i[undefined very_bad bad medium good perfect])
+    }
   end
 end

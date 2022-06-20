@@ -51,8 +51,7 @@ class CardsController < ApplicationController
 
   def set_confidence_level
     @card = @board.cards.find(params[:card_id])
-    @card.update(confidence_level: params[:confidence_level])
-    redirect_to request.referer
+    redirect_to request.referer if @card.update(confidence_level: params[:confidence_level])
   end
 
   private
