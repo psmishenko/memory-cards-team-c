@@ -1,0 +1,30 @@
+<h1><%= t('.header') %></h1>
+<%= button_to new_import_path, method: 'get', class: "btn btn-outline-dark" do%>
+  <span class="bi"><%= t('.new_board_button') %></span>
+<% end %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col"><%= t('.name') %></th>
+      <th scope="col"><%= t('.edit') %></th>
+      <th scope="col"><%= t('.download') %></th>
+      <th scope="col"><%= t('.delete') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @imports.each do |import|%>
+      <tr>
+        <td><%= import.file_blob.filename %></td>
+        <td><%= button_to(edit_import_path(import), method: 'get', class: "btn btn-primary") do%>
+          <i class="bi bi-pencil-fill"></i></td>
+        <% end %>
+        <td><%= link_to  import.file.url, download: import.file.filename, class: "btn btn-success" do%>
+        <i class="bi bi-cloud-download"></i></td>
+        <% end %>
+        <td><%= button_to(import_path(import), method: 'delete', class: "btn btn-danger", data: { confirm: t('global.confirm_deletion')}) do%>
+          <i class="bi bi-trash-fill"></i></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

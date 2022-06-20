@@ -52,6 +52,7 @@ en:
       boards: "Boards"
       back_to_boards: "Back to boards"
       back_to_cards: "Back to all cards"
+      back_to_imports: "Backto all imports"
     form:
       email_label: "Email"
       email_placeholder: "Insert your email"
@@ -112,6 +113,7 @@ en:
       navbar:
         home: "Home"
         manual: "Manual"
+        import: "Import"
         button:
           edit_user: "Edit user"
           sign_out: "Sign out"
@@ -136,7 +138,6 @@ en:
       manual:
         header: "Welcome to manual!"
 
-
 # FLASH MESSAGES
   flash:
     users:
@@ -160,7 +161,14 @@ en:
         success: 'Card deleted'
       learning:
         add_cards: 'Add cards before starting learning!'
-
+    imports:
+      no_access: "You don't have access to this file"
+      create:
+        success: 'File uploaded'
+      update:
+        success: 'File updated'
+      destroy:
+        success: 'File deleted'
 
 #USERS
   users:
@@ -211,3 +219,23 @@ en:
     learning:
       header: "%{board_name} learning"
       card_header: "Question №%{number}"
+
+# IMPORTS
+  imports:
+    index:
+      header: "Your Uploads"
+      new_board_button: "Upload new file"
+      name: "Name"
+      edit: "Edit"
+      download: "Download"
+      delete: "Delete"
+    form:
+      name_label: "File"
+      submit: "Upload"
+    new:
+      header: "Upload file"
+    edit:
+      header: "Edit uploaded file"
+    show:
+      header: "Information about the uploaded file:"
+      name: "Uploaded file:"

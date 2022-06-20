@@ -41,6 +41,11 @@ GEM
       rails-html-sanitizer (~> 1.1, >= 1.2.0)
     active_bootstrap_skin (0.1.5)
       bootstrap-sass (~> 3.4.1)
+    active_storage_validations (0.9.8)
+      activejob (>= 5.2.0)
+      activemodel (>= 5.2.0)
+      activestorage (>= 5.2.0)
+      activesupport (>= 5.2.0)
     activeadmin (2.13.1)
       arbre (~> 1.2, >= 1.2.1)
       formtastic (>= 3.1, < 5.0)
@@ -392,6 +397,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_bootstrap_skin (~> 0.1.5)
+  active_storage_validations (~> 0.9.8)
   activeadmin (~> 2.13, >= 2.13.1)
   aws-sdk-s3 (~> 1.114)
   bootsnap (>= 1.4.4)

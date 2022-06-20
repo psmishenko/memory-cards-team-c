@@ -53,6 +53,7 @@ ru:
       boards: "Доски"
       back_to_boards: "Вернуться к доскам"
       back_to_cards: "Вернуться к карточкам"
+      back_to_imports: "Вернуться к импортам"
     form:
       email_label: "Электронная почта"
       email_placeholder: "Введите вашу электронную почту"
@@ -113,6 +114,7 @@ ru:
       navbar:
         home: "Главная"
         manual: "Мануал"
+        import: "Импорт"
         button:
           edit_user: "Профиль"
           sign_out: "Выйти"
@@ -160,6 +162,14 @@ ru:
         success: 'Карточка удалена'
       learning:
         add_cards: 'Добавьте карточек перед стартом обучения!'
+    imports:
+      no_access: "У вас нет доступа к данному файлу"
+      create:
+        success: 'Файл загружен'
+      update:
+        success: 'Файл обновлен'
+      destroy:
+        success: 'Файл удален'
 
 #USERS
   users:
@@ -210,3 +220,23 @@ ru:
     learning:
       header: "Изучение темы %{board_name}"
       card_header: "Вопрос №%{number}"
+
+# IMPORTS
+  imports:
+    index:
+      header: "Ваши загрузки"
+      new_board_button: "Загрузить новый файл"
+      name: "Название"
+      edit: "Изменить"
+      download: "Скачать"
+      delete: "Удалить"
+    form:
+      name_label: "Файл"
+      submit: "Загрузить"
+    new:
+      header: "Загрузить файл"
+    edit:
+      header: "Изменить загруженый файл"
+    show:
+      header: "Информация о загруженном файле:"
+      name: "Загруженный файл:"
