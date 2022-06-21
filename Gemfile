@@ -27,6 +27,7 @@ gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
 gem 'active_bootstrap_skin', '~> 0.1.5'
 gem 'sprockets', '= 3.7.2'
 gem 'active_storage_validations', '~> 0.9.8'
+gem 'file_validators', '~> 3.0'
 
 
 

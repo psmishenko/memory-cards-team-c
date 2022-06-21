@@ -36,7 +36,9 @@
 <div class="d-flex flex-row">
   <div class=" p-1">
     <%= f.submit t('.submit'), class: "btn btn-success" %>
-    <%= link_to t('.sign_up_github'), user_github_omniauth_authorize_path, method: :post, class: "btn btn-success" %>
+    <%= link_to user_github_omniauth_authorize_path, method: :post, class: "btn btn-dark" do%>
+    <i class="bi bi-github"> <%=t('.sign_up_github')%></i>
+    <% end %>
   </div>
 </div>
 <% end %>
