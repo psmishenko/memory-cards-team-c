@@ -1,0 +1,8 @@
+<%= form_with model: @import do |form| %>
+<div class="container p-3">
+  <div class="form-group w-50 p-1">
+    <%= form.file_field :file, autocomplete: :on%><br />
+  </div>
+  <%= form.submit t('.submit'), class: "btn btn-primary"%>
+</div>
+<% end %>

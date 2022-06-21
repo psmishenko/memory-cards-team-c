@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:github]
   has_many :boards, dependent: :destroy
+  has_many :imports, dependent: :destroy
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first
