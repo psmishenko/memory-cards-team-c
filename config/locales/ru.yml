@@ -102,6 +102,7 @@ ru:
         password_confirmation_placeholder: Подтвердите ваш пароль
         password_label_em: '%{number} символов минимум'
         sign_up_github: Регистрация через Github
+        sign_up_google: Регистрация через Google
         submit: Регистрация
         user_name_label: Имя
         user_name_placeholder: Введите ваше имя
@@ -110,6 +111,7 @@ ru:
         header: Войти в аккаунт
         remember_me_label: Запомнить
         sign_in_github: Войти с помощью Github
+        sign_in_google: Войти с помощью Google
         submit: Войти
     shared:
       links:

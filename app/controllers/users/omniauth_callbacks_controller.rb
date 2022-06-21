@@ -6,6 +6,10 @@ module Users
       handle_auth 'Github'
     end
 
+    def google_oauth2
+      handle_auth 'Google'
+    end
+
     # rubocop:disable Metrics/AbcSize
 
     def handle_auth(kind)
