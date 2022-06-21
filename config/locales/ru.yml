@@ -8,6 +8,8 @@ ru:
       card:
         answer: Ответ
         question: Вопрос
+      user:
+        avatar: Аватарка
     errors:
       models:
         board:
@@ -23,6 +25,9 @@ ru:
             question:
               too_long: не должен превышать %{count} символов
           blank: обязателен!
+        user:
+          allowed_file_content_types: 'должна быть определенного типа: %{types}'
+          file_size_is_less_than_or_equal_to: 'должна иметь размер менее или равный %{count}'
     models:
       board:
         one: Доска
