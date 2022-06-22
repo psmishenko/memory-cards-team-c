@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :imports, dependent: :destroy
   has_one_attached :avatar
   validates :avatar, file_size: { less_than_or_equal_to: 2.megabytes },
-              file_content_type: { allow: ['image/jpeg', 'image/png', 'image/gif'] }
+                     content_type: ['image/jpeg', 'image/png', 'image/gif']
 
   def self.from_omniauth(auth)
     user = User.where(email: auth.info.email).first

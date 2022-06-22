@@ -17,6 +17,13 @@ RSpec.describe 'Registrations', type: :request do
       it { is_expected.to redirect_to(user_session_path) }
       it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
     end
+
+    describe 'PUT /remove_avatar' do
+      before { put '/remove_avatar', params: correct_params }
+
+      it { is_expected.to redirect_to(user_session_path) }
+      it { expect(flash[:alert]).to include('You need to sign in or sign up before continuing.') }
+    end
   end
 
   context 'when the user is logged in' do
@@ -36,6 +43,21 @@ RSpec.describe 'Registrations', type: :request do
       end
 
       it { expect(flash[:success]).to include('Password updated') }
+    end
+
+    describe 'PUT /remove_avatar' do
+      before { put '/remove_avatar', headers: { 'HTTP_REFERER' => 'http://example.com/en/users/edit' } }
+
+      context 'when the user has an avatar' do
+        it { expect(user.avatar).not_to be_attached }
+      end
+
+      context 'when the user does not have an avatar' do
+        before { user.avatar.detach }
+
+        it { is_expected.to redirect_to(request.referer) }
+        it { expect(flash[:alert]).to include("You don't have an attached avatar") }
+      end
     end
   end
 end
