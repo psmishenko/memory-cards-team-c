@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resource :user, only: [:edit, :update]
     root 'static_pages#home'
     get '/manual', to: 'static_pages#manual'
+    put "remove_avatar", to: "users#remove_avatar"
     resources :boards do
       resources :cards do
         patch :set_confidence_level
