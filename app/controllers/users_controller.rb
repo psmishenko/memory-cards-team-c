@@ -18,9 +18,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def remove_avatar
+    @user = current_user
+    if @user.avatar.attached?
+      @user.avatar.detach
+      flash[:success] = t('flash.users.remove_avatar.success')
+    else
+      flash[:alert] = t('flash.users.remove_avatar.error')
+    end
+    redirect_to request.referer
+  end
+
   private
 
   def user_params
-    params.require(:user).permit(:password, :password_confirmation)
+    params.require(:user).permit(:password, :password_confirmation, :avatar)
   end
 end

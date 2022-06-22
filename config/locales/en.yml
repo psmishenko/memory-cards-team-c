@@ -8,6 +8,8 @@ en:
       card:
         answer: Answer
         question: Question
+      user:
+        avatar: Avatar
     errors:
       models:
         board:
@@ -87,6 +89,7 @@ en:
       edit:
         change_password: Change password
         delete_account: Delete account
+        delete_avatar: Remove avatar
         description2: You can delete your account at any time. Just press button below
         description3: Change your password if you want. Just press button below
         header: Edit User
@@ -153,6 +156,9 @@ en:
       update:
         success: File updated
     users:
+      remove_avatar:
+        success: Avatar removed. Set to Github/Google or default image
+        error: You don't have an attached avatar
       update:
         success: Password updated
   global:
