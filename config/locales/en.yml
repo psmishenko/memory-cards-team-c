@@ -101,6 +101,7 @@ en:
         password_confirmation_placeholder: Confirm your password
         password_label_em: '%{number} characters minimum'
         sign_up_github: Sign up with Github
+        sign_up_google: Sign up with Google
         submit: Sign up
         user_name_label: Name
         user_name_placeholder: Insert your name
@@ -109,6 +110,7 @@ en:
         header: Log in
         remember_me_label: Remember me
         sign_in_github: Sign in with Github
+        sign_in_google: Sign in with Google
         submit: Log in
     shared:
       links:

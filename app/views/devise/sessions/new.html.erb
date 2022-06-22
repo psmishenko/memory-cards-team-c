@@ -24,7 +24,12 @@
 <div class="d-flex flex-row">
   <div class="p-1">
     <%= f.submit t('.submit'), class: "btn btn-success" %>
-    <%= link_to t('.sign_in_github'), user_github_omniauth_authorize_path, method: :post, class: "btn btn-success" %>
+    <%= link_to user_github_omniauth_authorize_path, method: :post, class: "btn btn-success" do%>
+      <i class="bi bi-github"> <%=t('.sign_in_github')%></i>
+    <% end %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "btn btn-success" do%>
+      <i class="bi bi-google"> <%=t('.sign_in_google')%></i>
+    <% end %>
   </div>
 </div>
 <% end %>
