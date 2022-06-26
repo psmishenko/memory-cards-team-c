@@ -40,6 +40,16 @@ class ImportsController < ApplicationController
     redirect_to imports_path
   end
 
+  def card_import
+    if @import.file.blob.content_type == 'text/csv'
+      CardImport.new(import: @import, user: current_user).call
+      flash[:success] = t('flash.imports.card_import.import_started')
+    else
+      flash[:warn] = t('flash.imports.card_import.wrong_format')
+    end
+    redirect_to imports_path
+  end
+
   private
 
   def import_params

@@ -151,6 +151,9 @@ ru:
       update:
         success: Карточка обновлена
     imports:
+      card_import:
+        import_started: Импорт начался
+        wrong_format: Неправильный формат файла
       create:
         success: Файл загружен
       destroy:
@@ -183,6 +186,7 @@ ru:
       name_label: Файл
       submit: Загрузить
     index:
+      create_cards: Создать карточки
       delete: Удалить
       download: Скачать
       edit: Изменить

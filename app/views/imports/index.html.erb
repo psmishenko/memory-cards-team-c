@@ -7,6 +7,7 @@
     <tr>
       <th scope="col"><%= t('.name') %></th>
       <th scope="col"><%= t('.edit') %></th>
+      <th scope="col"><%= t('.create_cards') %></th>
       <th scope="col"><%= t('.download') %></th>
       <th scope="col"><%= t('.delete') %></th>
     </tr>
@@ -17,6 +18,13 @@
         <td><%= import.file_blob.filename %></td>
         <td><%= button_to(edit_import_path(import), method: 'get', class: "btn btn-primary") do%>
           <i class="bi bi-pencil-fill"></i></td>
+        <% end %>
+        <%if import.file.blob.content_type == 'text/csv'%>
+          <td><%= button_to(card_import_import_path(import), method: 'get', class: "btn btn-primary") do%>
+            <i class="bi bi-wrench-adjustable"></i></td>
+          <% end %>
+        <%else%>
+          <td></td>
         <% end %>
         <td><%= link_to  import.file.url, download: import.file.filename, class: "btn btn-success" do%>
         <i class="bi bi-cloud-download"></i></td>
