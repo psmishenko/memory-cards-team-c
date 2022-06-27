@@ -7,13 +7,11 @@ class CardImport
   end
 
   def call
-    file = find_file
-    data = CSV.parse(file, headers: false)
-    data.each do |array|
-      unless array[0] == 'board_name'
-        create_board(array) if Board.find_by(name: array[0]).blank?
-        create_card(array)
-      end
+    data = CSV.parse(find_file, headers: false)
+    create_board(data[1])
+    board = Board.find_by(name: data[1][0])
+    data.drop(1).each do |array|
+      create_card(array, board)
     end
   end
 
@@ -37,8 +35,7 @@ class CardImport
     @user.boards.build({ name: array[0], description: 'Import' }).save!
   end
 
-  def create_card(array)
-    board = Board.find_by(name: array[0])
+  def create_card(array, board)
     board.cards.build({ question: array[1], answer: array[2] }).save!
   end
 end
