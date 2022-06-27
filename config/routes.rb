@@ -16,7 +16,11 @@ Rails.application.routes.draw do
       end
       get '/learning', to: 'cards#learning'
     end
-    resources :imports
+    resources :imports, param: :id do
+      member do 
+       get '/card_import', to: 'imports#card_import'
+      end
+    end
     get '/404', to: "errors#not_found"
     get '/422', to: "errors#unacceptable"
     get '/500', to: "errors#internal_error"

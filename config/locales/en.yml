@@ -148,6 +148,9 @@ en:
       update:
         success: Card updated
     imports:
+      card_import:
+        import_started: Import started
+        wrong_format: Wrong file format
       create:
         success: File uploaded
       destroy:
@@ -180,6 +183,7 @@ en:
       name_label: File
       submit: Upload
     index:
+      create_cards: Create cards
       delete: Delete
       download: Download
       edit: Edit
