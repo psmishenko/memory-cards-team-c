@@ -202,7 +202,7 @@ en:
       step3: Fill your boards with informative cards. You can highlight your code in answers like code editors!
       step4: Watch your cards and repeat stuff!
       step5: You can also use board learning feature for quality training.
-      step6: (New feature!)
+      step6: Import your boards and cards from CSV files!
     navbar:
       button:
         edit_user: Edit user
